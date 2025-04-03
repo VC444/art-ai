@@ -4,7 +4,6 @@ import { useCallback, useState } from "react";
 import Image from "next/image";
 import {
   AlertCircle,
-  Check,
   Download,
   ImageIcon,
   Maximize2,
@@ -125,7 +124,7 @@ export default function Home() {
   return (
     <div className="container mx-auto py-8 px-4">
       <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl text-center mb-8">
-        Image Style Transformer
+        AI Image Transformer
       </h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
@@ -291,40 +290,10 @@ export default function Home() {
         </div>
       )}
 
-      <div className="mb-8">
-        <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0 mb-4">
-          Choose an Art Style
-        </h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-          {artStyles.map((style) => (
-            <Card
-              key={style.id}
-              className={`cursor-pointer transition-all hover:shadow-md ${
-                selectedStyle === style.id ? "ring-2 ring-primary" : ""
-              }`}
-              onClick={() => handleStyleSelect(style.id)}
-            >
-              <CardContent className="p-4">
-                <AspectRatio
-                  ratio={1 / 1}
-                  className="bg-muted mb-2 rounded-md overflow-hidden"
-                >
-                  <Image
-                    src={style.previewSrc || "/placeholder.svg"}
-                    alt={style.name}
-                    fill
-                    className="object-cover transition-all hover:scale-105"
-                  />
-                </AspectRatio>
-                <h3 className="font-medium">{style.name}</h3>
-                <p className="text-xs text-muted-foreground mt-1">
-                  {style.description}
-                </p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </div>
+      <StyleSelector
+        selectedStyle={selectedStyle}
+        handleStyleSelect={handleStyleSelect}
+      />
 
       <Dialog
         open={showOriginalFullscreen}
@@ -382,3 +351,50 @@ export default function Home() {
     </div>
   );
 }
+
+interface StyleSelectorProps {
+  selectedStyle: string | null;
+  handleStyleSelect: (styleId: string) => void;
+}
+
+const StyleSelector = ({
+  selectedStyle,
+  handleStyleSelect,
+}: StyleSelectorProps) => {
+  return (
+    <div className="mb-8">
+      <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0 mb-4">
+        Choose an Art Style
+      </h2>
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+        {artStyles.map((style) => (
+          <Card
+            key={style.id}
+            className={`cursor-pointer transition-all hover:shadow-md ${
+              selectedStyle === style.id ? "ring-2 ring-primary" : ""
+            }`}
+            onClick={() => handleStyleSelect(style.id)}
+          >
+            <CardContent className="p-4">
+              <AspectRatio
+                ratio={1 / 1}
+                className="bg-muted mb-2 rounded-md overflow-hidden"
+              >
+                <Image
+                  src={style.previewSrc || "/placeholder.svg"}
+                  alt={style.name}
+                  fill
+                  className="object-cover transition-all hover:scale-105"
+                />
+              </AspectRatio>
+              <h3 className="font-medium">{style.name}</h3>
+              <p className="text-xs text-muted-foreground mt-1">
+                {style.description}
+              </p>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </div>
+  );
+};

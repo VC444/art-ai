@@ -21,10 +21,10 @@ export const artStyles = [
     previewSrc: "/pop-art.jpg",
   },
   {
-    id: "minimalist",
-    name: "Minimalist",
-    description: "Simplicity in form and color with maximum effect",
-    previewSrc: "/minimalist.webp",
+    id: "pixar",
+    name: "Pixar",
+    description: "Pixar art style",
+    previewSrc: "/pixar.avif",
   },
   {
     id: "watercolor",
@@ -49,5 +49,32 @@ export const artStyles = [
     name: "Oil Painting",
     description: "Rich colors with textured brush strokes",
     previewSrc: "/oil-painting.avif",
+  },
+  {
+    id: "cyberpunk",
+    name: "Cyberpunk",
+    description:
+      "Cyberpunk-inspired art style with neon colors and futuristic elements",
+    previewSrc: "/cyberpunk.jpg",
+  },
+  {
+    id: "caricature",
+    name: "Caricature",
+    description:
+      "Caricature art style with exaggerated features and playful elements",
+    previewSrc: "/caricature.jpg",
+  },
+  {
+    id: "gothic-noir",
+    name: "Gothic Noir",
+    description:
+      "Gothic noir art style with dark, moody elements and dramatic lighting",
+    previewSrc: "/gothic-noir.jpg",
+  },
+  {
+    id: "puppet",
+    name: "Puppet",
+    description: "Puppet style",
+    previewSrc: "/puppet.webp",
   },
 ];

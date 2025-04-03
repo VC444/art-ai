@@ -26,7 +26,12 @@ import { artStyles } from "@/utils/art-styles";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Dialog, DialogClose, DialogContent } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 export default function Home() {
   const [uploadedImage, setUploadedImage] = useState<string | null>(null);
@@ -108,7 +113,7 @@ export default function Home() {
   } = useDropzone({
     onDrop,
     accept: {
-      "image/*": [".jpeg", ".jpg", ".png", ".gif", ".webp"],
+      "image/*": [".jpeg", ".jpg", ".png", ".webp"],
     },
     maxFiles: 1,
     multiple: false,
@@ -207,9 +212,6 @@ export default function Home() {
                       </AlertDescription>
                     </Alert>
                   )}
-                  <p className="text-xs text-muted-foreground">
-                    Supports JPG, PNG, GIF, WEBP
-                  </p>
                 </div>
               )}
             </div>
@@ -343,12 +345,12 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Full-screen dialog for original image */}
       <Dialog
         open={showOriginalFullscreen}
         onOpenChange={setShowOriginalFullscreen}
       >
         <DialogContent className="!container w-[90vw] h-[90vh] p-0 overflow-hidden">
+          <DialogTitle className="sr-only">Original Image</DialogTitle>
           <div className="relative w-full h-full flex items-center justify-center bg-black">
             {uploadedImage && (
               <Image
@@ -366,12 +368,12 @@ export default function Home() {
         </DialogContent>
       </Dialog>
 
-      {/* Full-screen dialog for transformed image */}
       <Dialog
         open={showTransformedFullscreen}
         onOpenChange={setShowTransformedFullscreen}
       >
         <DialogContent className="!container w-[90vw] h-[90vh] p-0 overflow-hidden">
+          <DialogTitle className="sr-only">Transformed Image</DialogTitle>
           <div className="relative w-full h-full flex items-center justify-center bg-black">
             {transformedImage && (
               <Image

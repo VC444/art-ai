@@ -69,7 +69,7 @@ export default function Home() {
   } = useDropzone({
     onDrop,
     accept: {
-      "image/*": [".jpeg", ".jpg", ".png", ".gif", ".webp"],
+      "image/*": [".jpeg", ".jpg", ".png"],
     },
     maxFiles: 1,
     multiple: false,

@@ -42,7 +42,6 @@ export default function Home() {
   const [showOriginalFullscreen, setShowOriginalFullscreen] = useState(false);
   const [showTransformedFullscreen, setShowTransformedFullscreen] =
     useState(false);
-  const [downloadSuccess, setDownloadSuccess] = useState(false);
 
   const handleStyleSelect = (styleId: string) => {
     setSelectedStyle(styleId);
@@ -72,10 +71,6 @@ export default function Home() {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-
-    // Show success indicator briefly
-    setDownloadSuccess(true);
-    setTimeout(() => setDownloadSuccess(false), 2000);
   };
 
   const onDrop = useCallback((acceptedFiles: File[], rejectedFiles: any[]) => {
@@ -253,13 +248,6 @@ export default function Home() {
                       <span className="sr-only">View full screen</span>
                     </Button>
                   </AspectRatio>
-                  <p className="text-sm text-muted-foreground">
-                    {selectedStyle &&
-                      `Style: ${
-                        artStyles.find((style) => style.id === selectedStyle)
-                          ?.name
-                      }`}
-                  </p>
                 </div>
               ) : (
                 <div className="text-center text-muted-foreground p-4">
@@ -281,17 +269,10 @@ export default function Home() {
                 onClick={handleDownload}
                 className="gap-2"
               >
-                {downloadSuccess ? (
-                  <>
-                    <Check className="h-4 w-4" />
-                    Downloaded
-                  </>
-                ) : (
-                  <>
-                    <Download className="h-4 w-4" />
-                    Download Image
-                  </>
-                )}
+                <>
+                  <Download className="h-4 w-4" />
+                  Download Image
+                </>
               </Button>
             </CardFooter>
           )}

@@ -348,7 +348,7 @@ export default function Home() {
         open={showOriginalFullscreen}
         onOpenChange={setShowOriginalFullscreen}
       >
-        <DialogContent className="max-w-screen-lg w-[90vw] h-[90vh] p-0 overflow-hidden">
+        <DialogContent className="!container w-[90vw] h-[90vh] p-0 overflow-hidden">
           <div className="relative w-full h-full flex items-center justify-center bg-black">
             {uploadedImage && (
               <Image
@@ -371,7 +371,7 @@ export default function Home() {
         open={showTransformedFullscreen}
         onOpenChange={setShowTransformedFullscreen}
       >
-        <DialogContent className="max-w-screen-lg w-[90vw] h-[90vh] p-0 overflow-hidden">
+        <DialogContent className="!container w-[90vw] h-[90vh] p-0 overflow-hidden">
           <div className="relative w-full h-full flex items-center justify-center bg-black">
             {transformedImage && (
               <Image

@@ -1,4 +1,4 @@
-// copy pasted from the Supabase docs
+// copy pasted from the Supabase docs - this is used for email/pw auth
 import { type EmailOtpType } from "@supabase/supabase-js";
 import { type NextRequest } from "next/server";
 

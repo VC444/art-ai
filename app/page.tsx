@@ -31,6 +31,16 @@ import {
   DialogContent,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { createClientForBrowser } from "@/utils/supabase/client";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export default function Home() {
   const [uploadedImage, setUploadedImage] = useState<string | null>(null);
@@ -121,11 +131,29 @@ export default function Home() {
     return "border-muted";
   };
 
+  const handleAvatarClick = () => {};
+
   return (
     <div className="container mx-auto py-8 px-4">
-      <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl text-center mb-8">
-        AI Image Transformer
-      </h1>
+      <div className="relative flex items-center justify-center">
+        <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl text-center mb-8">
+          AI Image Transformer
+        </h1>
+
+        <DropdownMenu>
+          <DropdownMenuTrigger className="absolute right-0 focus:outline-none">
+            <Avatar className="h-12 w-12" onClick={handleAvatarClick}>
+              <AvatarImage src="https://github.com/shadcn.png" />
+              <AvatarFallback>CN</AvatarFallback>
+            </Avatar>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuLabel>Hi, Vignesh</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>Profile</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
         <Card className="overflow-hidden">

@@ -142,7 +142,10 @@ export default function Home() {
 
         <DropdownMenu>
           <DropdownMenuTrigger className="absolute right-0 focus:outline-none">
-            <Avatar className="h-12 w-12" onClick={handleAvatarClick}>
+            <Avatar
+              className="sm:h-1 sm:w-1 md:h-8 md:w-8 lg:h-12 lg:w-12"
+              onClick={handleAvatarClick}
+            >
               <AvatarImage src="https://github.com/shadcn.png" />
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>

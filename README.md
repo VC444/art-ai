@@ -37,6 +37,6 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 ## Supabase
 
-This project uses Supabase for auth. It has google Oauth login using the PKCE flow. Refer to [Supabase Auth Doc](https://supabase.com/docs/guides/auth/social-login/auth-google?queryGroups=platform&platform=web&queryGroups=environment&environment=server&queryGroups=framework&framework=nextjs) for implementation details.
+This project uses Supabase for auth. It has google Oauth login using the PKCE flow. Refer to [Supabase - Login with Google](https://supabase.com/docs/guides/auth/social-login/auth-google?queryGroups=platform&platform=web&queryGroups=environment&environment=server&queryGroups=framework&framework=nextjs) and [Setting up Server-Side Auth for Next.js](https://supabase.com/docs/guides/auth/server-side/nextjs?queryGroups=router&router=app) for implementation details.
 
 ### Note: Check TODO.md for more details

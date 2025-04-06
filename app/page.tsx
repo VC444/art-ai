@@ -153,7 +153,7 @@ export default function Home() {
           <DropdownMenuContent>
             <DropdownMenuLabel>Hi, Vignesh</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Profile</DropdownMenuItem>
+            <DropdownMenuItem>Available Credits: 56</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>

@@ -1,6 +1,11 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
+import { Zap } from "lucide-react";
+
+import { useUser } from "./hooks/useSupabase";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,7 +15,7 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { useUser } from "./hooks/useSupabase";
+import { badgeVariants } from "./ui/badge";
 
 export const UserAvatar = () => {
   const user = useUser();
@@ -30,6 +35,17 @@ export const UserAvatar = () => {
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem>Available Credits: 56</DropdownMenuItem>
+        <div className="full-width flex justify-center">
+          <Link
+            href="/pricing"
+            className={`${badgeVariants({
+              variant: "outline",
+            })} outline-secondary mt-1.5 mb-1.5 `}
+          >
+            Buy Credits
+            <Zap className="h-4 w-4" />
+          </Link>
+        </div>
       </DropdownMenuContent>
     </DropdownMenu>
   );

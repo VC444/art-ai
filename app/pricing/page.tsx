@@ -1,0 +1,192 @@
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
+import { Loader2, CreditCard, ArrowLeft, Check, Zap, Info } from "lucide-react";
+
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+
+export default function PricingPage() {
+  const [loading, setLoading] = useState<string | null>(null);
+  const [purchaseComplete, setPurchaseComplete] = useState(false);
+
+  const handlePurchase = async (credits: number, price: string) => {
+    setLoading(`${credits}`);
+
+    // Simulate payment processing
+    setTimeout(() => {
+      setLoading(null);
+      setPurchaseComplete(true);
+
+      // Reset after showing success message
+      setTimeout(() => {
+        setPurchaseComplete(false);
+      }, 3000);
+    }, 1500);
+  };
+
+  return (
+    <div className="container mx-auto py-8 px-4">
+      <div className="flex items-center mb-6">
+        <Link href="/" className="mr-4">
+          <Button variant="ghost" size="icon">
+            <ArrowLeft className="h-4 w-4" />
+            <span className="sr-only">Back to home</span>
+          </Button>
+        </Link>
+        <h1 className="text-3xl font-bold">Pricing</h1>
+      </div>
+
+      <div className="max-w-3xl mx-auto">
+        <div className="text-center mb-10">
+          <h2 className="text-2xl font-bold mb-2">Purchase AI Credits</h2>
+          <p className="text-muted-foreground">
+            Transform images into masterpieces with one click.
+          </p>
+        </div>
+
+        {purchaseComplete && (
+          <Alert className="mb-8 bg-green-50 border-green-200">
+            <Check className="h-4 w-4 text-green-600" />
+            <AlertDescription className="text-green-700">
+              Purchase successful! Your credits have been added to your account.
+            </AlertDescription>
+          </Alert>
+        )}
+
+        <div className="grid gap-8 md:grid-cols-2 mb-8">
+          {/* Basic Package */}
+          <Card className="flex flex-col">
+            <CardHeader>
+              <CardTitle className="flex items-center justify-between">
+                <span>Basic Package</span>
+                <CreditCard className="h-5 w-5 text-primary" />
+              </CardTitle>
+              <CardDescription>
+                Perfect for trying out the service
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="flex-grow">
+              <div className="text-4xl font-bold mb-6">$4.99</div>
+
+              <div className="space-y-2">
+                <div className="flex items-center">
+                  <Check className="h-5 w-5 text-green-500 mr-2" />
+                  <span>20 AI transformation credits</span>
+                </div>
+                <div className="flex items-center">
+                  <Check className="h-5 w-5 text-green-500 mr-2" />
+                  <span>All art styles included</span>
+                </div>
+                <div className="flex items-center">
+                  <Check className="h-5 w-5 text-green-500 mr-2" />
+                  <span>High-resolution outputs</span>
+                </div>
+                <div className="flex items-center">
+                  <Check className="h-5 w-5 text-green-500 mr-2" />
+                  <span>Download transformed images</span>
+                </div>
+              </div>
+            </CardContent>
+            <CardFooter>
+              <Button
+                className="w-full"
+                onClick={() => handlePurchase(20, "$4.99")}
+                disabled={loading !== null}
+              >
+                {loading === "20" ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Processing...
+                  </>
+                ) : (
+                  <>Buy 20 Credits</>
+                )}
+              </Button>
+            </CardFooter>
+          </Card>
+
+          {/* Premium Package */}
+          <Card className="flex flex-col border-primary">
+            <CardHeader>
+              <div className="flex items-center justify-between">
+                <CardTitle className="flex items-center">
+                  Premium Package
+                  <Badge className="ml-2 bg-primary" variant="default">
+                    Best Value
+                  </Badge>
+                </CardTitle>
+                <Zap className="h-5 w-5 text-primary" />
+              </div>
+              <CardDescription>More credits at a better price</CardDescription>
+            </CardHeader>
+            <CardContent className="flex-grow">
+              <div className="text-4xl font-bold mb-6">$9.99</div>
+
+              <div className="space-y-2">
+                <div className="flex items-center font-medium">
+                  <Check className="h-5 w-5 text-green-500 mr-2" />
+                  <span>45 AI transformation credits</span>
+                </div>
+                <div className="flex items-center">
+                  <Check className="h-5 w-5 text-green-500 mr-2" />
+                  <span>All art styles included</span>
+                </div>
+                <div className="flex items-center">
+                  <Check className="h-5 w-5 text-green-500 mr-2" />
+                  <span>High-resolution outputs</span>
+                </div>
+                <div className="flex items-center">
+                  <Check className="h-5 w-5 text-green-500 mr-2" />
+                  <span>Download transformed images</span>
+                </div>
+                <div className="flex items-center">
+                  <Check className="h-5 w-5 text-green-500 mr-2" />
+                  <span>More credits for less money</span>
+                </div>
+              </div>
+            </CardContent>
+            <CardFooter>
+              <Button
+                className="w-full"
+                variant="default"
+                onClick={() => handlePurchase(45, "$9.99")}
+                disabled={loading !== null}
+              >
+                {loading === "45" ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Processing...
+                  </>
+                ) : (
+                  <>Buy 45 Credits</>
+                )}
+              </Button>
+            </CardFooter>
+          </Card>
+        </div>
+
+        <Alert className="bg-blue-50 border-blue-100">
+          <Info className="h-4 w-4 text-blue-600" />
+          <AlertDescription className="text-blue-700">
+            <p>
+              <strong>Note:</strong> Each image transformation costs 1 credit.
+              Credits are transferred to your account immediately after
+              purchase.
+            </p>
+          </AlertDescription>
+        </Alert>
+      </div>
+    </div>
+  );
+}

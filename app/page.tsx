@@ -41,6 +41,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { UserAvatar } from "@/components/UserAvatar";
 
 export default function Home() {
   const [uploadedImage, setUploadedImage] = useState<string | null>(null);
@@ -131,8 +132,6 @@ export default function Home() {
     return "border-muted";
   };
 
-  const handleAvatarClick = () => {};
-
   return (
     <div className="container mx-auto py-8 px-4">
       <div className="relative flex items-center justify-center">
@@ -140,22 +139,7 @@ export default function Home() {
           AI Image Transformer
         </h1>
 
-        <DropdownMenu>
-          <DropdownMenuTrigger className="absolute right-0 focus:outline-none">
-            <Avatar
-              className="sm:h-1 sm:w-1 md:h-8 md:w-8 lg:h-12 lg:w-12"
-              onClick={handleAvatarClick}
-            >
-              <AvatarImage src="https://github.com/shadcn.png" />
-              <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent>
-            <DropdownMenuLabel>Hi, Vignesh</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>Available Credits: 56</DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <UserAvatar />
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">

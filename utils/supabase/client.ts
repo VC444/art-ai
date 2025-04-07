@@ -6,3 +6,7 @@ export function createClientForBrowser() {
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
   );
 }
+
+export type SupabaseBrowserClientType = ReturnType<
+  typeof createClientForBrowser
+>;

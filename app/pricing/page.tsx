@@ -1,8 +1,5 @@
-"use client";
-
-import { useState } from "react";
 import Link from "next/link";
-import { Loader2, CreditCard, ArrowLeft, Check, Zap, Info } from "lucide-react";
+import { CreditCard, ArrowLeft, Check, Zap, Info } from "lucide-react";
 
 import {
   Card,
@@ -15,26 +12,9 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import PurchaseButton from "./PurchaseButton"; // Create this client component
 
 export default function PricingPage() {
-  const [loading, setLoading] = useState<string | null>(null);
-  const [purchaseComplete, setPurchaseComplete] = useState(false);
-
-  const handlePurchase = async (credits: number, price: string) => {
-    setLoading(`${credits}`);
-
-    // Simulate payment processing
-    setTimeout(() => {
-      setLoading(null);
-      setPurchaseComplete(true);
-
-      // Reset after showing success message
-      setTimeout(() => {
-        setPurchaseComplete(false);
-      }, 3000);
-    }, 1500);
-  };
-
   return (
     <div className="container mx-auto py-8 px-4">
       <div className="flex items-center mb-6">
@@ -54,15 +34,6 @@ export default function PricingPage() {
             Transform images into masterpieces with one click.
           </p>
         </div>
-
-        {purchaseComplete && (
-          <Alert className="mb-8 bg-green-50 border-green-200">
-            <Check className="h-4 w-4 text-green-600" />
-            <AlertDescription className="text-green-700">
-              Purchase successful! Your credits have been added to your account.
-            </AlertDescription>
-          </Alert>
-        )}
 
         <div className="grid gap-8 md:grid-cols-2 mb-8">
           {/* Basic Package */}
@@ -99,20 +70,7 @@ export default function PricingPage() {
               </div>
             </CardContent>
             <CardFooter>
-              <Button
-                className="w-full"
-                onClick={() => handlePurchase(20, "$4.99")}
-                disabled={loading !== null}
-              >
-                {loading === "20" ? (
-                  <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Processing...
-                  </>
-                ) : (
-                  <>Buy 20 Credits</>
-                )}
-              </Button>
+              <PurchaseButton credits={20} />
             </CardFooter>
           </Card>
 
@@ -157,21 +115,7 @@ export default function PricingPage() {
               </div>
             </CardContent>
             <CardFooter>
-              <Button
-                className="w-full"
-                variant="default"
-                onClick={() => handlePurchase(45, "$9.99")}
-                disabled={loading !== null}
-              >
-                {loading === "45" ? (
-                  <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Processing...
-                  </>
-                ) : (
-                  <>Buy 45 Credits</>
-                )}
-              </Button>
+              <PurchaseButton credits={45} />
             </CardFooter>
           </Card>
         </div>

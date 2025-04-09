@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { Zap } from "lucide-react";
 
-import { useUser } from "./hooks/useSupabase";
+import { useSupabase, useUser } from "./hooks/useSupabase";
 
 import {
   DropdownMenu,
@@ -16,10 +16,27 @@ import {
 } from "./ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { badgeVariants } from "./ui/badge";
+import { useQuery } from "@tanstack/react-query";
 
 export const UserAvatar = () => {
+  const supabase = useSupabase();
   const user = useUser();
-  console.log(user);
+
+  const { data: creditBalance, error } = useQuery({
+    queryKey: ["credit-balance", user?.id],
+    queryFn: async () => {
+      const creditsResp = await supabase
+        ?.from("credit_balances")
+        .select("credits")
+        .eq("user_id", user?.id)
+        .single();
+
+      return creditsResp?.data?.credits;
+    },
+    enabled: !!user?.id && !!supabase,
+  });
+
+  if (error) throw error;
 
   return (
     <DropdownMenu>
@@ -34,7 +51,7 @@ export const UserAvatar = () => {
           Hi, {user?.user_metadata?.name?.split(" ")[0]}
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>Available Credits: 56</DropdownMenuItem>
+        <DropdownMenuItem>Available Credits: {creditBalance}</DropdownMenuItem>
         <div className="full-width flex justify-center">
           <Link
             href="/pricing"

@@ -50,7 +50,9 @@ export default function PurchaseButton({ credits }: PurchaseButtonProps) {
         throw error;
       }
 
-      await queryClient.invalidateQueries(["credit-balance", user?.id]);
+      await queryClient.invalidateQueries({
+        queryKey: ["credit-balance", user?.id],
+      });
       toast.success(`${credits} credits added to your account!`);
     } catch (error) {
       throw error;

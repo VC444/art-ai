@@ -31,7 +31,7 @@ export const UserAvatar = () => {
         .eq("user_id", user?.id)
         .single();
 
-      return creditsResp?.data?.credits;
+      return creditsResp?.data?.credits || 0;
     },
     enabled: !!user?.id && !!supabase,
   });

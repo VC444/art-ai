@@ -39,20 +39,19 @@ export const UserAvatar = () => {
 
   if (error) throw error;
 
+  const userInitials = getInitials(user?.user_metadata.full_name);
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="absolute right-0 focus:outline-none">
         <Avatar className="sm:h-1 sm:w-1 md:h-8 md:w-8 lg:h-12 lg:w-12">
-          <AvatarImage src="https://github.com/shadcn.png" />
-          <AvatarFallback>CN</AvatarFallback>
+          <AvatarImage src={user?.user_metadata.avatar_url} />
+          <AvatarFallback>{userInitials}</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuLabel>
-          Hi, {user?.user_metadata?.name?.split(" ")[0]}
-        </DropdownMenuLabel>
-        <DropdownMenuSeparator />
         <ThemeToggle />
+        <DropdownMenuSeparator />
         <DropdownMenuItem>
           Available Credits: <Badge variant="secondary">{creditBalance}</Badge>
         </DropdownMenuItem>
@@ -70,4 +69,14 @@ export const UserAvatar = () => {
       </DropdownMenuContent>
     </DropdownMenu>
   );
+};
+
+const getInitials = (name?: string) => {
+  if (!name) return "?";
+  return name
+    .split(" ")
+    .map((part) => part[0])
+    .join("")
+    .toUpperCase()
+    .slice(0, 2);
 };

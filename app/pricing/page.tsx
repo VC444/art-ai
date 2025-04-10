@@ -94,7 +94,7 @@ export default function PricingPage() {
               <div className="space-y-2">
                 <div className="flex items-center font-medium">
                   <Check className="h-5 w-5 text-green-500 mr-2" />
-                  <span>45 AI transformation credits</span>
+                  <span>50 AI transformation credits</span>
                 </div>
                 <div className="flex items-center">
                   <Check className="h-5 w-5 text-green-500 mr-2" />
@@ -110,12 +110,12 @@ export default function PricingPage() {
                 </div>
                 <div className="flex items-center">
                   <Check className="h-5 w-5 text-green-500 mr-2" />
-                  <span>More credits for less money</span>
+                  <span>50% more value</span>
                 </div>
               </div>
             </CardContent>
             <CardFooter>
-              <PurchaseButton credits={45} />
+              <PurchaseButton credits={50} />
             </CardFooter>
           </Card>
         </div>
@@ -127,9 +127,9 @@ export default function PricingPage() {
 
 const ImageToCreditsInfo = () => {
   return (
-    <Alert className="bg-blue-50 border-blue-100">
-      <Info className="h-4 w-4 text-blue-600" />
-      <AlertDescription className="text-blue-700">
+    <Alert className="bg-secondary">
+      <Info />
+      <AlertDescription>
         <p>
           <strong>Note:</strong> Each image transformation costs 1 credit.
           Credits are transferred to your account immediately after purchase.

@@ -12,7 +12,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import PurchaseButton from "./PurchaseButton"; // Create this client component
+import PurchaseButton from "./PurchaseButton";
 
 export default function PricingPage() {
   return (
@@ -48,7 +48,7 @@ export default function PricingPage() {
               </CardDescription>
             </CardHeader>
             <CardContent className="flex-grow">
-              <div className="text-4xl font-bold mb-6">$4.99</div>
+              <div className="text-4xl font-bold mb-6">$2.99</div>
 
               <div className="space-y-2">
                 <div className="flex items-center">
@@ -89,7 +89,7 @@ export default function PricingPage() {
               <CardDescription>More credits at a better price</CardDescription>
             </CardHeader>
             <CardContent className="flex-grow">
-              <div className="text-4xl font-bold mb-6">$9.99</div>
+              <div className="text-4xl font-bold mb-6">$4.99</div>
 
               <div className="space-y-2">
                 <div className="flex items-center font-medium">
@@ -119,18 +119,22 @@ export default function PricingPage() {
             </CardFooter>
           </Card>
         </div>
-
-        <Alert className="bg-blue-50 border-blue-100">
-          <Info className="h-4 w-4 text-blue-600" />
-          <AlertDescription className="text-blue-700">
-            <p>
-              <strong>Note:</strong> Each image transformation costs 1 credit.
-              Credits are transferred to your account immediately after
-              purchase.
-            </p>
-          </AlertDescription>
-        </Alert>
+        <ImageToCreditsInfo />
       </div>
     </div>
   );
 }
+
+const ImageToCreditsInfo = () => {
+  return (
+    <Alert className="bg-blue-50 border-blue-100">
+      <Info className="h-4 w-4 text-blue-600" />
+      <AlertDescription className="text-blue-700">
+        <p>
+          <strong>Note:</strong> Each image transformation costs 1 credit.
+          Credits are transferred to your account immediately after purchase.
+        </p>
+      </AlertDescription>
+    </Alert>
+  );
+};

@@ -325,10 +325,6 @@ export default function Home() {
                 className="object-contain"
               />
             )}
-            <DialogClose className="absolute top-4 right-4 bg-black/50 text-white p-2 rounded-full hover:bg-black/70">
-              <X className="h-6 w-6" />
-              <span className="sr-only">Close</span>
-            </DialogClose>
           </div>
         </DialogContent>
       </Dialog>
@@ -348,10 +344,6 @@ export default function Home() {
                 className="object-contain"
               />
             )}
-            <DialogClose className="absolute top-4 right-4 bg-black/50 text-white p-2 rounded-full hover:bg-black/70">
-              <X className="h-6 w-6" />
-              <span className="sr-only">Close</span>
-            </DialogClose>
             <Button
               variant="outline"
               onClick={handleDownload}

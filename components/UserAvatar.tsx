@@ -39,13 +39,17 @@ export const UserAvatar = () => {
 
   if (error) throw error;
 
-  const userInitials = getInitials(user?.user_metadata.full_name);
+  if (!user?.user_metadata) {
+    return null;
+  }
+
+  const userInitials = getInitials(user.user_metadata.full_name);
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="absolute right-0 focus:outline-none">
         <Avatar className="sm:h-1 sm:w-1 md:h-8 md:w-8 lg:h-12 lg:w-12">
-          <AvatarImage src={user?.user_metadata.avatar_url} />
+          <AvatarImage src={user.user_metadata.avatar_url} />
           <AvatarFallback>{userInitials}</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
@@ -72,7 +76,7 @@ export const UserAvatar = () => {
 };
 
 const getInitials = (name?: string) => {
-  if (!name) return "?";
+  if (!name) return null;
   return name
     .split(" ")
     .map((part) => part[0])

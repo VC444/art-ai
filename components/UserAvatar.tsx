@@ -15,8 +15,9 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { badgeVariants } from "./ui/badge";
+import { Badge, badgeVariants } from "./ui/badge";
 import { useQuery } from "@tanstack/react-query";
+import { ThemeToggle } from "./ThemeToggle";
 
 export const UserAvatar = () => {
   const supabase = useSupabase();
@@ -51,7 +52,10 @@ export const UserAvatar = () => {
           Hi, {user?.user_metadata?.name?.split(" ")[0]}
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>Available Credits: {creditBalance}</DropdownMenuItem>
+        <ThemeToggle />
+        <DropdownMenuItem>
+          Available Credits: <Badge variant="secondary">{creditBalance}</Badge>
+        </DropdownMenuItem>
         <div className="full-width flex justify-center">
           <Link
             href="/pricing"

@@ -57,18 +57,15 @@ export default function Home() {
     setSelectedStyle(styleId);
   };
 
-  const handleTransform = () => {
+  const handleTransform = async () => {
     if (!selectedStyle || !uploadedImage) return;
 
     setIsTransforming(true);
 
-    // Simulate image transformation with a delay
-    setTimeout(() => {
-      // In a real app, this would call an API to transform the image
-      // For demo purposes, we're just showing the original image
-      setTransformedImage(uploadedImage);
-      setIsTransforming(false);
-    }, 1500);
+    const transformedData = await fetch("/transform");
+
+    setTransformedImage(uploadedImage);
+    setIsTransforming(false);
   };
 
   const handleDownload = () => {

@@ -381,7 +381,7 @@ const StyleSelector = ({
           >
             <CardContent className="p-4">
               <AspectRatio
-                ratio={1 / 1}
+                ratio={2.5 / 3}
                 className="bg-muted mb-2 rounded-md overflow-hidden"
               >
                 <Image

@@ -15,10 +15,9 @@ export const artStyles = [
     previewSrc: "/ghibli.webp",
   },
   {
-    id: "1800s",
-    name: "1800s",
-    description:
-      "1800s art style with historical elements and vintage aesthetics",
+    id: "19th century",
+    name: "19th Century",
+    description: "19th-century art with classical details and vintage tones",
     previewSrc: "/1800s.png",
   },
   {
@@ -31,7 +30,9 @@ export const artStyles = [
     id: "watercolor",
     name: "Watercolor",
     description: "Transparent layers with soft, flowing transitions",
-    previewSrc: "/watercolor.jpg",
+    previewSrc: "/watercolor.png",
+    prompt:
+      "Convert this image into a soft, elegant watercolor painting. Apply gentle brush strokes, fluid textures, and subtle color bleeds characteristic of traditional watercolor art. Use a pastel-toned, airy palette with soft edges and light gradients. If the image contains people, ensure facial features, expressions, skin tones, and body proportions are accurately preserved—maintain identity and natural appearance while enhancing the artistic style. Keep the composition and key details intact for a realistic yet painterly effect.",
   },
   {
     id: "pixel-art",
@@ -43,7 +44,9 @@ export const artStyles = [
     id: "sketch",
     name: "Sketch",
     description: "Pencil-like drawing with emphasis on lines and shading",
-    previewSrc: "/sketch.jpg",
+    previewSrc: "/sketch.png",
+    prompt:
+      "Convert this image into a detailed black-and-white pencil sketch. Use fine, expressive lines and soft shading to capture depth, form, and texture. Emphasize contrast between light and shadow, while maintaining a hand-drawn, artistic feel. If the image contains people, carefully preserve facial features, expressions, skin tones (as shades), and body proportions—ensure the likeness and natural anatomy are intact. Focus on clarity and realism while enhancing the image with the charm of traditional pencil work. Retain the original composition and key visual elements.",
   },
   {
     id: "oil-painting",
@@ -57,6 +60,8 @@ export const artStyles = [
     description:
       "Cyberpunk-inspired art style with neon colors and futuristic elements",
     previewSrc: "/cyberpunk.png",
+    prompt:
+      "Transform this image into a high-detail cyberpunk-style artwork. Apply a futuristic, neon-lit aesthetic with vibrant colors like electric blues, purples, and pinks. Add elements such as holograms, glowing circuitry, high-tech textures, and atmospheric lighting (rain, fog, or city lights). If the image contains people, preserve their facial features, expressions, skin tones, and body proportions accurately—maintain their identity while blending them naturally into the cyberpunk environment. Keep the composition and core details consistent while enhancing the scene with a gritty, tech-noir vibe.",
   },
   {
     id: "caricature",
@@ -75,7 +80,7 @@ export const artStyles = [
   {
     id: "puppet",
     name: "Puppet",
-    description: "Puppet style",
+    description: "Characters with doll-like features and articulated limbs",
     previewSrc: "/puppet.webp",
   },
 ];

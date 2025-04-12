@@ -5,7 +5,7 @@ export const artStyles = [
     name: "Impressionist",
     description:
       "Characterized by small, thin brush strokes and emphasis on light",
-    previewSrc: "/impressionist.avif",
+    previewSrc: "/plate.png",
   },
   {
     id: "ghibli",
@@ -15,16 +15,17 @@ export const artStyles = [
     previewSrc: "/ghibli.webp",
   },
   {
-    id: "pop-art",
-    name: "Pop Art",
-    description: "Bold colors, sharp lines, and iconic cultural imagery",
-    previewSrc: "/pop-art.jpg",
+    id: "1800s",
+    name: "1800s",
+    description:
+      "1800s art style with historical elements and vintage aesthetics",
+    previewSrc: "/1800s.png",
   },
   {
     id: "pixar",
     name: "Pixar",
     description: "Pixar art style",
-    previewSrc: "/pixar.avif",
+    previewSrc: "/pixar.png",
   },
   {
     id: "watercolor",
@@ -55,7 +56,7 @@ export const artStyles = [
     name: "Cyberpunk",
     description:
       "Cyberpunk-inspired art style with neon colors and futuristic elements",
-    previewSrc: "/cyberpunk.jpg",
+    previewSrc: "/cyberpunk.png",
   },
   {
     id: "caricature",

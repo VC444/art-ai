@@ -7,7 +7,7 @@ const signInWithGoogle = async () => {
   const supabase = await createClientForServer();
   const callbackPrefix =
     process.env.NEXT_PUBLIC_SITE_URL ??
-    `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
+    `https://${process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL}`;
   const callbackUrl = `${callbackPrefix}/auth/callback`;
 
   const { data, error } = await supabase.auth.signInWithOAuth({

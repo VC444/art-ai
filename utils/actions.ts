@@ -5,7 +5,10 @@ import { createClientForServer } from "./supabase/server";
 
 const signInWithGoogle = async () => {
   const supabase = await createClientForServer();
-  const callbackUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/auth/callback`;
+  const callbackPrefix =
+    process.env.NEXT_PUBLIC_SITE_URL ??
+    `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
+  const callbackUrl = `${callbackPrefix}/auth/callback`;
 
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: "google",

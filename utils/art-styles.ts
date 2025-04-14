@@ -61,7 +61,7 @@ export const artStyles = [
     id: "oil-painting",
     name: "Oil Painting",
     description: "Rich colors with textured brush strokes",
-    previewSrc: "/oil-painting.avif",
+    previewSrc: "/oil.png",
   },
   {
     id: "caricature",

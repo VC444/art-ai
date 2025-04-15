@@ -10,6 +10,11 @@ const signInWithGoogle = async () => {
     `https://${process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL}`;
   const callbackUrl = `${callbackPrefix}/auth/callback`;
 
+  console.log({
+    callbackUrl,
+    vercel_branch_url: process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL,
+  });
+
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: "google",
     options: {

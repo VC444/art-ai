@@ -22,9 +22,9 @@ export function LoginForm({
               <div className="flex size-8 items-center justify-center rounded-md">
                 <GalleryVerticalEnd className="size-6" />
               </div>
-              <span className="sr-only">Acme Inc.</span>
+              <span className="sr-only">Art AI</span>
             </a>
-            <h1 className="text-xl font-bold">Welcome to Art AI</h1>
+            <h1 className="text-xl font-bold">Art AI</h1>
             {/* <div className="text-center text-sm">
               Don&apos;t have an account?{" "}
               <a href="#" className="underline underline-offset-4">
@@ -54,7 +54,7 @@ export function LoginForm({
           <Button
             variant="outline"
             type="button"
-            className="w-full"
+            className="w-full bg-white"
             onClick={() => signInWithGoogle()}
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

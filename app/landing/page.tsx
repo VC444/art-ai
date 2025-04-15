@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
+import Link from "next/link";
 
 const features = [
   {
@@ -150,7 +151,6 @@ export default function Home() {
           </Button>
         </nav>
       </header>
-
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-4 bg-gradient-to-br from-violet-100 via-white to-blue-100">
         <div className="container mx-auto">
@@ -169,12 +169,20 @@ export default function Home() {
                 artistic styles in just a few clicks.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="text-lg">
-                  Get Started
+                <Button size="lg" className="text-lg" asChild>
+                  <Link href="/">Get Started</Link>
                 </Button>
-                <Button size="lg" variant="outline" className="text-lg group">
-                  See Examples
-                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="text-lg group"
+                  asChild
+                >
+                  <Link href="#examples">
+                    See Examples
+                    <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                  </Link>
                 </Button>
               </div>
               <div className="mt-12 grid grid-cols-3 ">
@@ -232,8 +240,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Art Style Examples */}
       <section id="examples" className="py-20 bg-muted/50">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-4">
@@ -252,7 +258,7 @@ export default function Home() {
                     {style.description}
                   </p>
                 </div>
-                <div className="grid grid-cols-2 gap-2 p-4">
+                <div className="grid grid-cols-2 gap-2 pl-4 pr-4">
                   <img
                     src={style.before}
                     alt={`Original ${style.name}`}
@@ -268,14 +274,14 @@ export default function Home() {
             ))}
           </div>
           <div className="text-center mt-12">
-            <Button variant="outline" size="lg">
-              View All Styles
-              <ArrowRight className="ml-2 h-5 w-5" />
+            <Button variant="outline" size="lg" asChild>
+              <Link href="/">
+                Try All Styles <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
             </Button>
           </div>
         </div>
       </section>
-
       {/* Testimonials Section */}
       <section id="testimonials" className="py-20">
         <div className="container mx-auto px-4">
@@ -305,8 +311,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Pricing Section */}
       <section id="pricing" className="py-20 bg-muted/50">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">
@@ -342,16 +346,15 @@ export default function Home() {
                 <Button
                   className="w-full"
                   variant={plan.popular ? "default" : "outline"}
+                  asChild
                 >
-                  Choose {plan.name}
+                  <Link href="/pricing">Choose {plan.name}</Link>
                 </Button>
               </Card>
             ))}
           </div>
         </div>
       </section>
-
-      {/* CTA Section */}
       <section className="py-20 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">
@@ -362,116 +365,47 @@ export default function Home() {
             artwork today.
           </p>
           <Button size="lg" variant="secondary" className="text-lg">
-            Get Started Now
+            <Link href="/">Get Started Now</Link>
           </Button>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="py-12 border-t">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <Wand2 className="h-6 w-6 text-primary" />
-                <span className="font-bold text-xl">ArtifyAI</span>
-              </div>
-              <p className="text-muted-foreground">
-                Transform your photos into stunning artwork with the power of
-                AI.
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Product</h4>
-              <ul className="space-y-2">
-                <li>
-                  <a
-                    href="#features"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    Features
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#pricing"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    Pricing
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    API
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Company</h4>
-              <ul className="space-y-2">
-                <li>
-                  <a
-                    href="#"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    About
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    Blog
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    Careers
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Legal</h4>
-              <ul className="space-y-2">
-                <li>
-                  <a
-                    href="#"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    Privacy
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    Terms
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    Cookie Policy
-                  </a>
-                </li>
-              </ul>
-            </div>
+      <footer className="w-full border-t py-8 bg-white flex justify-center">
+        <div className="container flex flex-col items-center justify-center gap-6">
+          <div className="flex items-center gap-2">
+            <Wand2 className="h-6 w-6 text-violet-600" />
+            <span className="text-lg font-bold bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
+              ArtifyAI
+            </span>
           </div>
-          <div className="mt-12 pt-8 border-t text-center text-muted-foreground">
-            <p>&copy; 2024 ArtifyAI. All rights reserved.</p>
-          </div>
+          <nav className="flex flex-wrap gap-6 justify-center">
+            <Link
+              href="#"
+              className="text-sm font-medium text-slate-500 hover:text-violet-600"
+            >
+              Terms of Service
+            </Link>
+            <Link
+              href="#"
+              className="text-sm font-medium text-slate-500 hover:text-violet-600"
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              href="#"
+              className="text-sm font-medium text-slate-500 hover:text-violet-600"
+            >
+              FAQ
+            </Link>
+            <Link
+              href="#"
+              className="text-sm font-medium text-slate-500 hover:text-violet-600"
+            >
+              Contact
+            </Link>
+          </nav>
+          <p className="text-center text-sm text-slate-500">
+            © {new Date().getFullYear()} ArtifyAI. All rights reserved.
+          </p>
         </div>
       </footer>
     </div>

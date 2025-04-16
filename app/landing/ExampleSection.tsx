@@ -32,7 +32,7 @@ export function ExamplesSection() {
               <TabsTrigger value="sketch">Sketch</TabsTrigger>
               <TabsTrigger value="caricature">Caricature</TabsTrigger>
               <TabsTrigger value="pixel">Pixel Art</TabsTrigger>
-              <TabsTrigger value="puppet">Felt Art</TabsTrigger>
+              <TabsTrigger value="puppet">Puppet Art</TabsTrigger>
             </TabsList>
             <TabsContent value="sketch" className="mt-6">
               <div className="grid gap-6 md:grid-cols-2">
@@ -158,12 +158,12 @@ export function ExamplesSection() {
                 </div>
                 <div className="overflow-hidden rounded-lg border">
                   <div className="p-2">
-                    <h3 className="font-medium">Felt Art Style</h3>
+                    <h3 className="font-medium">Puppet Art Style</h3>
                   </div>
                   <div className="aspect-[4/3] bg-muted">
                     <Image
                       src="/puppet.png"
-                      alt="Felt art style warrior"
+                      alt="Puppet art style warrior"
                       width={600}
                       height={400}
                       className="h-full w-full object-cover"
@@ -172,7 +172,7 @@ export function ExamplesSection() {
                 </div>
               </div>
               <p className="mt-4 text-sm text-muted-foreground">
-                Textured felt-like illustration with vibrant colors and
+                Textured puppet-like illustration with vibrant colors and
                 simplified forms
               </p>
             </TabsContent>

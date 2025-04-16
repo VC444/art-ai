@@ -113,7 +113,6 @@ const pricingPlans = [
 export default function Home() {
   return (
     <div className="min-h-screen bg-background bg-gradient-to-b from-violet-50 via-white to-blue-50">
-      {/* Header */}
       <header className="fixed top-0 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-50 border-b">
         <nav className="container mx-auto px-4 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -152,7 +151,6 @@ export default function Home() {
           </Button>
         </nav>
       </header>
-      {/* Hero Section */}
       <section className="pt-32 pb-20 px-4 bg-gradient-to-br from-violet-100 via-white to-blue-100">
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -165,9 +163,8 @@ export default function Home() {
                 <span className="text-primary">Stunning Art</span>
               </h1>
               <p className="text-xl text-muted-foreground mb-8 max-w-lg">
-                Turn ordinary images into extraordinary artwork with our
-                AI-powered style transfer technology. Choose from dozens of
-                artistic styles in just a few clicks.
+                Turn ordinary images into extraordinary artwork. Choose from a
+                variety of artistic styles in just a few clicks.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button size="lg" className="text-lg" asChild>
@@ -234,7 +231,7 @@ export default function Home() {
                   Sketch Style
                 </p>
                 <Button variant="outline" className="w-full mt-4">
-                  Try Different Style
+                  <Link href="#examples">Try Different Style</Link>
                 </Button>
               </div>
             </div>
@@ -244,13 +241,23 @@ export default function Home() {
 
       <ExamplesSection />
 
-      {/* Testimonials Section */}
       <section id="testimonials" className="py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">
-            <span className="text-primary">What Our Users Say</span>
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="flex flex-col items-center justify-center space-y-4 text-center">
+            <div className="space-y-2">
+              <div className="inline-block rounded-lg bg-primary/10 px-3 py-1 text-sm text-primary">
+                Testimonials
+              </div>
+              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
+                What Our Users Say
+              </h2>
+              <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed">
+                Don't just take our word for it. Here's what our users have to
+                say about ArtifyAI.
+              </p>
+            </div>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8 py-12">
             {testimonials.map((testimonial) => (
               <Card key={testimonial.author} className="p-6">
                 <div className="flex gap-1 mb-4">
@@ -275,10 +282,21 @@ export default function Home() {
       </section>
       <section id="pricing" className="py-20 bg-muted/50">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">
-            <span className="text-primary">Choose Your Plan</span>
-          </h2>
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="flex flex-col items-center justify-center space-y-4 text-center">
+            <div className="space-y-2">
+              <div className="inline-block rounded-lg bg-primary/10 px-3 py-1 text-sm text-primary">
+                Pricing
+              </div>
+              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
+                Purchase AI Credits
+              </h2>
+              <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed">
+                Transform images into masterpieces with one click. Each
+                transformation costs 1 credit.
+              </p>
+            </div>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto py-8">
             {pricingPlans.map((plan) => (
               <Card
                 key={plan.name}

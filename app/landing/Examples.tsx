@@ -7,7 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 
-export function ExamplesSection() {
+export function Examples() {
   return (
     <section id="examples" className="py-20 bg-muted/50">
       <div className="container mx-auto px-4">
@@ -27,37 +27,38 @@ export function ExamplesSection() {
         </div>
 
         <div className="mx-auto max-w-5xl py-12">
-          <Tabs defaultValue="sketch" className="w-full">
+          <Tabs defaultValue="pixar" className="w-full">
             <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 bg-neutral-200">
-              <TabsTrigger value="sketch">Sketch</TabsTrigger>
+              <TabsTrigger value="pixar">Pixar</TabsTrigger>
+              <TabsTrigger value="ghibli">Ghibli</TabsTrigger>
               <TabsTrigger value="caricature">Caricature</TabsTrigger>
-              <TabsTrigger value="pixel">Pixel Art</TabsTrigger>
-              <TabsTrigger value="puppet">Puppet Art</TabsTrigger>
+              <TabsTrigger value="puppet">Puppet</TabsTrigger>
             </TabsList>
-            <TabsContent value="sketch" className="mt-6">
+            <TabsContent value="pixar" className="mt-6">
               <div className="grid gap-6 md:grid-cols-2">
                 <div className="overflow-hidden rounded-lg border">
                   <div className="p-2">
                     <h3 className="font-medium">Original</h3>
                   </div>
-                  <div className="aspect-[4/3] bg-muted">
+                  <div className="aspect-[2.5/3] bg-muted">
                     <Image
-                      src="/sketch-og.jpg"
+                      src="/pixar-convert.jpg"
                       alt="Original portrait"
                       width={600}
                       height={400}
                       className="h-full w-full object-cover"
+                      style={{ objectPosition: "left 30% top 0" }}
                     />
                   </div>
                 </div>
                 <div className="overflow-hidden rounded-lg border">
                   <div className="p-2">
-                    <h3 className="font-medium">Sketch Style</h3>
+                    <h3 className="font-medium">Pixar Style</h3>
                   </div>
-                  <div className="aspect-[4/3] bg-muted">
+                  <div className="aspect-[2.5/3] bg-muted">
                     <Image
-                      src="/sketch.png"
-                      alt="Sketch style portrait"
+                      src="/pixar.png"
+                      alt="Pixar style art"
                       width={600}
                       height={400}
                       className="h-full w-full object-cover"
@@ -66,18 +67,18 @@ export function ExamplesSection() {
                 </div>
               </div>
               <p className="mt-4 text-sm text-muted-foreground">
-                Pencil-like drawing with emphasis on lines and shading
+                Pixar art style
               </p>
             </TabsContent>
-            <TabsContent value="caricature" className="mt-6">
+            <TabsContent value="ghibli" className="mt-6">
               <div className="grid gap-6 md:grid-cols-2">
                 <div className="overflow-hidden rounded-lg border">
                   <div className="p-2">
                     <h3 className="font-medium">Original</h3>
                   </div>
-                  <div className="aspect-[4/3] bg-muted">
+                  <div className="aspect-[2.5/3] bg-muted">
                     <Image
-                      src="/caricature-convert.webp"
+                      src="/ghibli-convert-two.jpg"
                       alt="Original couple selfie"
                       width={600}
                       height={400}
@@ -87,48 +88,50 @@ export function ExamplesSection() {
                 </div>
                 <div className="overflow-hidden rounded-lg border">
                   <div className="p-2">
-                    <h3 className="font-medium">Caricature Style</h3>
+                    <h3 className="font-medium">Ghibli Style</h3>
                   </div>
-                  <div className="aspect-[4/3] bg-muted">
+                  <div className="aspect-[2.5/3] bg-muted">
                     <Image
-                      src="/caricature.png"
-                      alt="Caricature style couple"
+                      src="/ghibli.png"
+                      alt="Ghibli style couple"
                       width={600}
                       height={400}
                       className="h-full w-full object-cover"
+                      style={{ objectPosition: "left 0 top 0" }}
                     />
                   </div>
                 </div>
               </div>
               <p className="mt-4 text-sm text-muted-foreground">
-                Cartoon-style illustration with exaggerated features and vibrant
-                colors
+                Studio Ghibli-inspired art style with whimsical characters and
+                landscapes
               </p>
             </TabsContent>
-            <TabsContent value="pixel" className="mt-6">
+            <TabsContent value="caricature" className="mt-6">
               <div className="grid gap-6 md:grid-cols-2">
                 <div className="overflow-hidden rounded-lg border">
                   <div className="p-2">
                     <h3 className="font-medium">Original</h3>
                   </div>
-                  <div className="aspect-[4/3] bg-muted">
+                  <div className="aspect-[2.5/3] bg-muted">
                     <Image
-                      src="/pixel-convert.jpg"
-                      alt="Original cat photo"
+                      src="/caricature-convert.webp"
+                      alt="Original caricature photo"
                       width={600}
                       height={400}
                       className="h-full w-full object-cover"
+                      style={{ objectPosition: "left 40% top 0" }}
                     />
                   </div>
                 </div>
                 <div className="overflow-hidden rounded-lg border">
                   <div className="p-2">
-                    <h3 className="font-medium">Pixel Art Style</h3>
+                    <h3 className="font-medium">Caricature Art Style</h3>
                   </div>
-                  <div className="aspect-[4/3] bg-muted">
+                  <div className="aspect-[2.5/3] bg-muted">
                     <Image
-                      src="/pixel.png"
-                      alt="Pixel art style cat"
+                      src="/caricature.png"
+                      alt="Caricature style couple photo"
                       width={600}
                       height={400}
                       className="h-full w-full object-cover"
@@ -137,7 +140,8 @@ export function ExamplesSection() {
                 </div>
               </div>
               <p className="mt-4 text-sm text-muted-foreground">
-                Digital art created using pixel-by-pixel editing technique
+                Caricature art style with exaggerated features and playful
+                elements
               </p>
             </TabsContent>
             <TabsContent value="puppet" className="mt-6">
@@ -146,7 +150,7 @@ export function ExamplesSection() {
                   <div className="p-2">
                     <h3 className="font-medium">Original</h3>
                   </div>
-                  <div className="aspect-[4/3] bg-muted">
+                  <div className="aspect-[2.5/3] bg-muted">
                     <Image
                       src="/puppet-convert.webp"
                       alt="Original warrior photo"
@@ -160,7 +164,7 @@ export function ExamplesSection() {
                   <div className="p-2">
                     <h3 className="font-medium">Puppet Art Style</h3>
                   </div>
-                  <div className="aspect-[4/3] bg-muted">
+                  <div className="aspect-[2.5/3] bg-muted">
                     <Image
                       src="/puppet.png"
                       alt="Puppet art style warrior"
@@ -180,23 +184,25 @@ export function ExamplesSection() {
 
           <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             <Card className="overflow-hidden pt-0">
-              <AspectRatio ratio={1}>
+              <AspectRatio ratio={2.5 / 3}>
                 <Image
-                  src="/oil-convert.avif"
-                  alt="Oil painting style"
+                  src="/cyberpunk.png"
+                  alt="Cyberpunk style"
                   fill
                   className="object-cover"
+                  // style={{ objectPosition: "left 50% top 50%" }}
                 />
               </AspectRatio>
               <CardContent className="p-4">
-                <h3 className="font-bold">Oil Painting</h3>
+                <h3 className="font-bold">Cyberpunk</h3>
                 <p className="text-xs text-muted-foreground">
-                  Classic oil painting effect with rich textures and warm tones
+                  Cyberpunk-inspired art style with neon colors and futuristic
+                  elements
                 </p>
               </CardContent>
             </Card>
             <Card className="overflow-hidden pt-0">
-              <AspectRatio ratio={1}>
+              <AspectRatio ratio={2.5 / 3}>
                 <Image
                   src="/caricature.png"
                   alt="Cartoon style"
@@ -213,7 +219,7 @@ export function ExamplesSection() {
               </CardContent>
             </Card>
             <Card className="overflow-hidden pt-0">
-              <AspectRatio ratio={1}>
+              <AspectRatio ratio={2.5 / 3}>
                 <Image
                   src="/pixel.png"
                   alt="Pixel Art style"
@@ -229,7 +235,7 @@ export function ExamplesSection() {
               </CardContent>
             </Card>
             <Card className="overflow-hidden pt-0">
-              <AspectRatio ratio={1}>
+              <AspectRatio ratio={2.5 / 3}>
                 <Image
                   src="/sketch.png"
                   alt="Sketch style"

@@ -1,9 +1,15 @@
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { Check } from "lucide-react";
 import Link from "next/link";
-import React from "react";
+import { CreditCard, Check, Zap } from "lucide-react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
 export const Pricing = () => {
   return (
@@ -18,79 +24,100 @@ export const Pricing = () => {
               Purchase AI Credits
             </h2>
             <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed">
-              Transform images into masterpieces with one click. Each
-              transformation costs 1 credit.
+              Transform images into masterpieces with one click.
             </p>
           </div>
         </div>
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto py-8">
-          {pricingPlans.map((plan) => (
-            <Card
-              key={plan.name}
-              className={`p-6 ${
-                plan.popular ? "border-primary/50 shadow-lg" : ""
-              }`}
-            >
-              {plan.popular && (
-                <Badge className="mb-4 bg-primary">Most Popular</Badge>
-              )}
-              <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
-              <div className="flex items-baseline mb-4">
-                <span className="text-4xl font-bold text-primary">
-                  {plan.price}
-                </span>
-                <span className="text-muted-foreground">/{plan.period}</span>
+
+        <div className="grid gap-8 md:grid-cols-2 max-w-3xl mx-auto mt-8">
+          {/* Basic Package */}
+          <Card className="flex flex-col">
+            <CardHeader>
+              <CardTitle className="flex items-center justify-between">
+                <span>Basic Package</span>
+                <CreditCard className="h-5 w-5 text-primary" />
+              </CardTitle>
+              <CardDescription>
+                Perfect for trying out the service
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="flex-grow">
+              <div className="text-4xl font-bold mb-6">$2.99</div>
+
+              <div className="space-y-2">
+                <div className="flex items-center">
+                  <Check className="h-5 w-5 text-green-500 mr-2" />
+                  <span>20 AI transformation credits</span>
+                </div>
+                <div className="flex items-center">
+                  <Check className="h-5 w-5 text-green-500 mr-2" />
+                  <span>All art styles included</span>
+                </div>
+                <div className="flex items-center">
+                  <Check className="h-5 w-5 text-green-500 mr-2" />
+                  <span>High-resolution outputs</span>
+                </div>
+                <div className="flex items-center">
+                  <Check className="h-5 w-5 text-green-500 mr-2" />
+                  <span>Download transformed images</span>
+                </div>
               </div>
-              <p className="text-muted-foreground mb-6">{plan.description}</p>
-              <ul className="space-y-3 mb-6">
-                {plan.features.map((feature) => (
-                  <li key={feature} className="flex items-center gap-2">
-                    <Check className="h-4 w-4 text-primary" />
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-              <Button
-                className="w-full"
-                variant={plan.popular ? "default" : "outline"}
-                asChild
-              >
+            </CardContent>
+            <CardFooter>
+              <Button className="w-full" asChild>
                 <Link href="/pricing">Get Started</Link>
               </Button>
-            </Card>
-          ))}
+            </CardFooter>
+          </Card>
+
+          {/* Premium Package */}
+          <Card className="flex flex-col border-primary">
+            <CardHeader>
+              <div className="flex items-center justify-between">
+                <CardTitle className="flex items-center">
+                  Premium Package
+                  <Badge className="ml-2 bg-primary" variant="default">
+                    Best Value
+                  </Badge>
+                </CardTitle>
+                <Zap className="h-5 w-5 text-primary" />
+              </div>
+              <CardDescription>More credits at a better price</CardDescription>
+            </CardHeader>
+            <CardContent className="flex-grow">
+              <div className="text-4xl font-bold mb-6">$4.99</div>
+
+              <div className="space-y-2">
+                <div className="flex items-center font-medium">
+                  <Check className="h-5 w-5 text-green-500 mr-2" />
+                  <span>50 AI transformation credits</span>
+                </div>
+                <div className="flex items-center">
+                  <Check className="h-5 w-5 text-green-500 mr-2" />
+                  <span>All art styles included</span>
+                </div>
+                <div className="flex items-center">
+                  <Check className="h-5 w-5 text-green-500 mr-2" />
+                  <span>High-resolution outputs</span>
+                </div>
+                <div className="flex items-center">
+                  <Check className="h-5 w-5 text-green-500 mr-2" />
+                  <span>Download transformed images</span>
+                </div>
+                <div className="flex items-center">
+                  <Check className="h-5 w-5 text-green-500 mr-2" />
+                  <span>50% more value</span>
+                </div>
+              </div>
+            </CardContent>
+            <CardFooter>
+              <Button className="w-full" asChild>
+                <Link href="/pricing">Get Started</Link>
+              </Button>
+            </CardFooter>
+          </Card>
         </div>
       </div>
     </section>
   );
 };
-
-const pricingPlans = [
-  {
-    name: "Basic",
-    price: "$9",
-    period: "month",
-    description: "Perfect for occasional use",
-    features: [
-      "10 transformations per month",
-      "5 art styles",
-      "Standard resolution output",
-      "24-hour support",
-    ],
-  },
-  {
-    name: "Pro",
-    price: "$29",
-    period: "month",
-    description: "Best for professionals",
-    features: [
-      "Unlimited transformations",
-      "All art styles",
-      "High resolution output",
-      "Priority support",
-      "Commercial usage rights",
-      "API access",
-    ],
-    popular: true,
-  },
-];

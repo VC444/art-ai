@@ -253,7 +253,7 @@ export function Examples() {
 
           <div className="mt-8 text-center">
             <Button asChild>
-              <Link href="#pricing">Transform Your Images Now</Link>
+              <Link href="/">Transform Your Images Now</Link>
             </Button>
           </div>
         </div>

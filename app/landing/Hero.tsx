@@ -19,7 +19,8 @@ export const Hero = () => {
               <span className="text-primary">Stunning Art</span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-lg">
-              Choose from a variety of artistic styles in just a few clicks.
+              Choose from a variety of artistic styles like Ghibli in just a few
+              clicks.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button size="lg" className="text-lg" asChild>
@@ -38,7 +39,7 @@ export const Hero = () => {
                 </Link>
               </Button>
             </div>
-            <div className="mt-12 grid grid-cols-3 ">
+            <div className="mt-12 grid grid-cols-3 gap-8 max-w-lg">
               {features.map((feature) => (
                 <div key={feature.title} className="flex flex-col items-start">
                   <Check className="h-5 w-5 text-primary mb-2" />

@@ -31,8 +31,8 @@ export const Features = () => {
               </div>
               <h3 className="text-xl font-bold">Multiple Styles</h3>
               <p className="text-center text-sm text-muted-foreground">
-                Choose from over 20 artistic styles including Cyberpunk,
-                Watercolor, Pixel Art, and more.
+                Transform your photos with styles like Cyberpunk, Puppet art,
+                Caricature, and more.
               </p>
             </CardContent>
           </Card>
@@ -41,10 +41,9 @@ export const Features = () => {
               <div className="rounded-full bg-primary/10 p-3">
                 <Zap className="h-6 w-6 text-primary" />
               </div>
-              <h3 className="text-xl font-bold">Instant Results</h3>
+              <h3 className="text-xl font-bold">Fast Results</h3>
               <p className="text-center text-sm text-muted-foreground">
-                Our advanced AI delivers high-quality transformations in
-                seconds, not minutes.
+                Get high-quality transformations in just a few minutes.
               </p>
             </CardContent>
           </Card>
@@ -67,8 +66,8 @@ export const Features = () => {
               </div>
               <h3 className="text-xl font-bold">Privacy First</h3>
               <p className="text-center text-sm text-muted-foreground">
-                Your images are processed securely and never stored without your
-                permission.
+                Your images are processed securely and never stored in our
+                database.
               </p>
             </CardContent>
           </Card>

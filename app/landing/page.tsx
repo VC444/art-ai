@@ -15,6 +15,7 @@ import {
 import Image from "next/image";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import Link from "next/link";
+import { ExamplesSection } from "./ExampleSection";
 
 const features = [
   {
@@ -240,48 +241,9 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section id="examples" className="py-20 bg-muted/50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-4">
-            <span className="text-primary">Featured Art Styles</span>
-          </h2>
-          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-            Explore some of our most popular transformations. With over a dozen
-            unique styles available, the possibilities are endless.
-          </p>
-          <div className="grid md:grid-cols-3 gap-8">
-            {artStyleExamples.map((style) => (
-              <Card key={style.name} className="overflow-hidden">
-                <div className="p-4">
-                  <h3 className="text-xl font-semibold mb-2">{style.name}</h3>
-                  <p className="text-muted-foreground text-sm">
-                    {style.description}
-                  </p>
-                </div>
-                <div className="grid grid-cols-2 gap-2 pl-4 pr-4">
-                  <img
-                    src={style.before}
-                    alt={`Original ${style.name}`}
-                    className="w-full aspect-[3/4] object-cover rounded-lg"
-                  />
-                  <img
-                    src={style.after}
-                    alt={`Transformed ${style.name}`}
-                    className="w-full aspect-[3/4] object-cover rounded-lg"
-                  />
-                </div>
-              </Card>
-            ))}
-          </div>
-          <div className="text-center mt-12">
-            <Button variant="outline" size="lg" asChild>
-              <Link href="/">
-                Try All Styles <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </section>
+
+      <ExamplesSection />
+
       {/* Testimonials Section */}
       <section id="testimonials" className="py-20">
         <div className="container mx-auto px-4">
@@ -348,7 +310,7 @@ export default function Home() {
                   variant={plan.popular ? "default" : "outline"}
                   asChild
                 >
-                  <Link href="/pricing">Choose {plan.name}</Link>
+                  <Link href="/pricing">Get Started</Link>
                 </Button>
               </Card>
             ))}

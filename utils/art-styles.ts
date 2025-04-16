@@ -5,7 +5,7 @@ export const artStyles = [
     name: "Impressionist",
     description:
       "Characterized by small, thin brush strokes and emphasis on light",
-    previewSrc: "/plate.png",
+    previewSrc: "/impressionist.png",
   },
   {
     id: "ghibli",

@@ -27,49 +27,13 @@ export function Examples() {
         </div>
 
         <div className="mx-auto max-w-5xl py-12">
-          <Tabs defaultValue="pixar" className="w-full">
+          <Tabs defaultValue="ghibli" className="w-full">
             <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 bg-neutral-200">
-              <TabsTrigger value="pixar">Pixar</TabsTrigger>
               <TabsTrigger value="ghibli">Ghibli</TabsTrigger>
-              <TabsTrigger value="caricature">Caricature</TabsTrigger>
               <TabsTrigger value="puppet">Puppet</TabsTrigger>
+              <TabsTrigger value="impressionist">Impressionist</TabsTrigger>
+              <TabsTrigger value="caricature">Caricature</TabsTrigger>
             </TabsList>
-            <TabsContent value="pixar" className="mt-6">
-              <div className="grid gap-6 md:grid-cols-2">
-                <div className="overflow-hidden rounded-lg border">
-                  <div className="p-2">
-                    <h3 className="font-medium">Original</h3>
-                  </div>
-                  <div className="aspect-[2.5/3] bg-muted">
-                    <Image
-                      src="/pixar-convert.jpg"
-                      alt="Original portrait"
-                      width={600}
-                      height={400}
-                      className="h-full w-full object-cover"
-                      style={{ objectPosition: "left 30% top 0" }}
-                    />
-                  </div>
-                </div>
-                <div className="overflow-hidden rounded-lg border">
-                  <div className="p-2">
-                    <h3 className="font-medium">Pixar Style</h3>
-                  </div>
-                  <div className="aspect-[2.5/3] bg-muted">
-                    <Image
-                      src="/pixar.png"
-                      alt="Pixar style art"
-                      width={600}
-                      height={400}
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
-                </div>
-              </div>
-              <p className="mt-4 text-sm text-muted-foreground">
-                Pixar art style
-              </p>
-            </TabsContent>
             <TabsContent value="ghibli" className="mt-6">
               <div className="grid gap-6 md:grid-cols-2">
                 <div className="overflow-hidden rounded-lg border">
@@ -105,43 +69,6 @@ export function Examples() {
               <p className="mt-4 text-sm text-muted-foreground">
                 Studio Ghibli-inspired art style with whimsical characters and
                 landscapes
-              </p>
-            </TabsContent>
-            <TabsContent value="caricature" className="mt-6">
-              <div className="grid gap-6 md:grid-cols-2">
-                <div className="overflow-hidden rounded-lg border">
-                  <div className="p-2">
-                    <h3 className="font-medium">Original</h3>
-                  </div>
-                  <div className="aspect-[2.5/3] bg-muted">
-                    <Image
-                      src="/caricature-convert.webp"
-                      alt="Original caricature photo"
-                      width={600}
-                      height={400}
-                      className="h-full w-full object-cover"
-                      style={{ objectPosition: "left 40% top 0" }}
-                    />
-                  </div>
-                </div>
-                <div className="overflow-hidden rounded-lg border">
-                  <div className="p-2">
-                    <h3 className="font-medium">Caricature Art Style</h3>
-                  </div>
-                  <div className="aspect-[2.5/3] bg-muted">
-                    <Image
-                      src="/caricature.png"
-                      alt="Caricature style couple photo"
-                      width={600}
-                      height={400}
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
-                </div>
-              </div>
-              <p className="mt-4 text-sm text-muted-foreground">
-                Caricature art style with exaggerated features and playful
-                elements
               </p>
             </TabsContent>
             <TabsContent value="puppet" className="mt-6">
@@ -180,6 +107,79 @@ export function Examples() {
                 simplified forms
               </p>
             </TabsContent>
+            <TabsContent value="impressionist" className="mt-6">
+              <div className="grid gap-6 md:grid-cols-2">
+                <div className="overflow-hidden rounded-lg border">
+                  <div className="p-2">
+                    <h3 className="font-medium">Original</h3>
+                  </div>
+                  <div className="aspect-[2.5/3] bg-muted">
+                    <Image
+                      src="/impressionist-convert.jpg"
+                      alt="Original portrait"
+                      width={600}
+                      height={400}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                </div>
+                <div className="overflow-hidden rounded-lg border">
+                  <div className="p-2">
+                    <h3 className="font-medium">Impressionist Style</h3>
+                  </div>
+                  <div className="aspect-[2.5/3] bg-muted">
+                    <Image
+                      src="/impressionist.png"
+                      alt="Impressionist style art"
+                      width={600}
+                      height={400}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                </div>
+              </div>
+              <p className="mt-4 text-sm text-muted-foreground">
+                Characterized by small, thin brush strokes and emphasis on light
+              </p>
+            </TabsContent>
+
+            <TabsContent value="caricature" className="mt-6">
+              <div className="grid gap-6 md:grid-cols-2">
+                <div className="overflow-hidden rounded-lg border">
+                  <div className="p-2">
+                    <h3 className="font-medium">Original</h3>
+                  </div>
+                  <div className="aspect-[2.5/3] bg-muted">
+                    <Image
+                      src="/caricature-convert.webp"
+                      alt="Original caricature photo"
+                      width={600}
+                      height={400}
+                      className="h-full w-full object-cover"
+                      style={{ objectPosition: "left 40% top 0" }}
+                    />
+                  </div>
+                </div>
+                <div className="overflow-hidden rounded-lg border">
+                  <div className="p-2">
+                    <h3 className="font-medium">Caricature Art Style</h3>
+                  </div>
+                  <div className="aspect-[2.5/3] bg-muted">
+                    <Image
+                      src="/caricature.png"
+                      alt="Caricature style couple photo"
+                      width={600}
+                      height={400}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                </div>
+              </div>
+              <p className="mt-4 text-sm text-muted-foreground">
+                Caricature art style with exaggerated features and playful
+                elements
+              </p>
+            </TabsContent>
           </Tabs>
 
           <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
@@ -190,7 +190,6 @@ export function Examples() {
                   alt="Cyberpunk style"
                   fill
                   className="object-cover"
-                  // style={{ objectPosition: "left 50% top 50%" }}
                 />
               </AspectRatio>
               <CardContent className="p-4">
@@ -204,17 +203,16 @@ export function Examples() {
             <Card className="overflow-hidden pt-0">
               <AspectRatio ratio={2.5 / 3}>
                 <Image
-                  src="/caricature.png"
-                  alt="Cartoon style"
+                  src="/1800s.png"
+                  alt="Impressionist style"
                   fill
                   className="object-cover"
                 />
               </AspectRatio>
               <CardContent className="p-4">
-                <h3 className="font-bold">Cartoon</h3>
+                <h3 className="font-bold">19th Century</h3>
                 <p className="text-xs text-muted-foreground">
-                  Playful cartoon style with bold outlines and simplified
-                  features
+                  19th-century art with classical details and vintage tones
                 </p>
               </CardContent>
             </Card>
@@ -241,6 +239,7 @@ export function Examples() {
                   alt="Sketch style"
                   fill
                   className="object-cover"
+                  style={{ objectPosition: "left 0 top 0" }}
                 />
               </AspectRatio>
               <CardContent className="p-4">

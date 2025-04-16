@@ -54,10 +54,10 @@ export const Hero = () => {
                   <p className="text-sm font-medium mb-2">Original Image</p>
                   <AspectRatio ratio={2.5 / 3}>
                     <Image
-                      src="/sketch-og.jpg"
+                      src="/pixar-convert.jpg"
                       alt="Original"
                       className="object-cover rounded-md"
-                      style={{ objectPosition: "left 10% top 0" }}
+                      style={{ objectPosition: "left 30% top 0" }}
                       fill
                       priority
                     />
@@ -67,7 +67,7 @@ export const Hero = () => {
                   <p className="text-sm font-medium mb-2">Transformed Image</p>
                   <AspectRatio ratio={2.5 / 3}>
                     <Image
-                      src="/sketch.png"
+                      src="/pixar.png"
                       alt="Transformed"
                       className="object-cover rounded-md"
                       style={{ objectPosition: "left 0 top 0" }}
@@ -78,7 +78,7 @@ export const Hero = () => {
                 </div>
               </div>
               <p className="text-sm text-center mt-4 text-muted-foreground">
-                Sketch Style
+                Pixar Style
               </p>
               <Button variant="outline" className="w-full mt-4">
                 <Link href="#examples">Try Different Style</Link>

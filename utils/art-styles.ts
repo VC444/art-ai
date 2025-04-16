@@ -1,6 +1,19 @@
 // Art styles with real-style images
 export const artStyles = [
   {
+    id: "puppet",
+    name: "Puppet",
+    description: "Characters with doll-like features and articulated limbs",
+    previewSrc: "/puppet.png",
+  },
+  {
+    id: "ghibli",
+    name: "Ghibli",
+    description:
+      "Studio Ghibli-inspired art style with whimsical characters and landscapes",
+    previewSrc: "/ghibli.png",
+  },
+  {
     id: "impressionist",
     name: "Impressionist",
     description:
@@ -8,23 +21,16 @@ export const artStyles = [
     previewSrc: "/impressionist.png",
   },
   {
-    id: "ghibli",
-    name: "Ghibli",
-    description:
-      "Studio Ghibli-inspired art style with whimsical characters and landscapes",
-    previewSrc: "/ghibli.webp",
+    id: "pixar",
+    name: "Pixar",
+    description: "Pixar art style",
+    previewSrc: "/pixar.png",
   },
   {
     id: "19th century",
     name: "19th Century",
     description: "19th-century art with classical details and vintage tones",
     previewSrc: "/1800s.png",
-  },
-  {
-    id: "pixar",
-    name: "Pixar",
-    description: "Pixar art style",
-    previewSrc: "/pixar.png",
   },
   {
     id: "watercolor",
@@ -80,12 +86,6 @@ export const artStyles = [
     previewSrc: "/gothic.png",
     prompt:
       "Transform this image into a dramatic Gothic Noir artwork. Apply a moody, monochromatic or desaturated palette with deep shadows, high contrast lighting, and rich textures. Incorporate Gothic architectural or atmospheric elements such as candlelit interiors, crumbling stone, fog, or ironwork. Use dramatic chiaroscuro (light vs. dark) to enhance depth and emotion. If the image contains people, preserve facial features, expressions, and body proportions with high accuracy, but depict them in a brooding, cinematic light. Add subtle period touches like vintage clothing, dark lace, or cloaks where appropriate. Maintain the original composition while infusing it with a haunting, mysterious tone.",
-  },
-  {
-    id: "puppet",
-    name: "Puppet",
-    description: "Characters with doll-like features and articulated limbs",
-    previewSrc: "/puppet.png",
   },
 ];
 

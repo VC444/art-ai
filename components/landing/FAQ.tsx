@@ -41,8 +41,7 @@ export function FAQ() {
                 What image formats are supported?
               </AccordionTrigger>
               <AccordionContent>
-                JPG, PNG, WEBP, and HEIC — up to 10MB. For best results, use
-                images that are at least 1000px wide or tall.
+                JPG, PNG, and WEBP — up to 20MB per image.
               </AccordionContent>
               <AccordionItem value="item-3">
                 <AccordionTrigger className="text-xl">

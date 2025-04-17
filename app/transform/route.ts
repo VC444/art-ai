@@ -1,3 +1,5 @@
+import fs from "fs";
+import path from "path";
 import { createClientForServer } from "@/utils/supabase/server";
 import { NextRequest } from "next/server";
 import OpenAI from "openai";
@@ -9,9 +11,29 @@ export async function GET(request: NextRequest) {
   //   apiKey: process.env["OPENAI_API_KEY"],
   // });
 
+  // const imagePath = path.join(process.cwd(), "public", "sketch-og.jpg");
+  // const base64Image = fs.readFileSync(imagePath, "base64");
+
+  // console.log({ base64Image });
+
   // const response = await client.responses.create({
-  //   model: "gpt-4o-mini",
-  //   input: "Write a one-sentence bedtime story about a unicorn.",
+  //   model: "gpt-4o",
+  //   input: [
+  //     {
+  //       role: "user",
+  //       content: [
+  //         {
+  //           type: "input_text",
+  //           text: "Convert this image into pixar art style",
+  //         },
+  //         {
+  //           type: "input_image",
+  //           image_url: `data:image/jpeg;base64,${base64Image}`,
+  //           detail: "high",
+  //         },
+  //       ],
+  //     },
+  //   ],
   // });
 
   await sleep(1000);
@@ -58,5 +80,6 @@ export async function GET(request: NextRequest) {
   return Response.json({
     success: true,
     remainingCredits: updateData.credits,
+    // openai_resp: response,
   });
 }

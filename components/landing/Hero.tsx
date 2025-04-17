@@ -24,7 +24,7 @@ export const Hero = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button size="lg" className="text-lg" asChild>
-                <Link href="/">Get Started</Link>
+                <Link href="/app">Get Started</Link>
               </Button>
 
               <Button

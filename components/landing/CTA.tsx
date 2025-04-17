@@ -14,7 +14,7 @@ export const CTA = () => {
           today.
         </p>
         <Button size="lg" variant="secondary" className="text-lg">
-          <Link href="/">Get Started Now</Link>
+          <Link href="/app">Get Started Now</Link>
         </Button>
       </div>
     </section>

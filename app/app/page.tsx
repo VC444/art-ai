@@ -8,6 +8,7 @@ import {
   ImageIcon,
   Maximize2,
   Upload,
+  Wand2,
   X,
 } from "lucide-react";
 import { useDropzone } from "react-dropzone";
@@ -132,9 +133,15 @@ export default function Home() {
   return (
     <div className="container mx-auto py-8 px-4">
       <div className="relative flex items-center justify-center">
-        <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl text-center mb-8">
-          AI Image Transformer
-        </h1>
+        {/* <h1 className="scroll-m-20 text-4xl font-semibold tracking-tight text-center mb-8">
+          <Wand2 className="h-6 w-6 text-primary" />
+          Artify AI
+        </h1> */}
+
+        <div className="flex items-center gap-2 mb-8">
+          <Wand2 className="h-6 w-6 text-primary" />
+          <h1 className="font-bold text-3xl">ArtifyAI</h1>
+        </div>
 
         <UserAvatar />
       </div>

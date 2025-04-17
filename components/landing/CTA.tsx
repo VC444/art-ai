@@ -10,8 +10,8 @@ export const CTA = () => {
           Ready to Transform Your Photos?
         </h2>
         <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
-          Join thousands of satisfied users and start creating stunning artwork
-          today.
+          See your photos in a whole new light — transform them with AI in
+          seconds.
         </p>
         <Button size="lg" variant="secondary" className="text-lg">
           <Link href="/app">Get Started Now</Link>

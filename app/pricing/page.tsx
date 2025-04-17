@@ -18,7 +18,7 @@ export default function PricingPage() {
   return (
     <div className="container mx-auto py-8 px-4">
       <div className="flex items-center mb-6">
-        <Link href="/" className="mr-4">
+        <Link href="/app" className="mr-4">
           <Button variant="ghost" size="icon">
             <ArrowLeft className="h-4 w-4" />
             <span className="sr-only">Back to home</span>

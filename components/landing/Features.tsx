@@ -43,7 +43,7 @@ export const Features = () => {
               </div>
               <h3 className="text-xl font-bold">Fast Results</h3>
               <p className="text-center text-sm text-muted-foreground">
-                Get high-quality transformations in just a few minutes.
+                Get high-quality transformations in just a few seconds.
               </p>
             </CardContent>
           </Card>

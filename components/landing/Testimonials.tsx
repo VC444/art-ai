@@ -46,26 +46,26 @@ export const Testimonials = () => {
   );
 };
 
-const testimonials = [
+export const testimonials = [
   {
     quote:
-      "This app has completely transformed how I create digital art. The results are simply amazing!",
-    author: "Sarah Johnson",
-    title: "Digital Artist",
+      "Was just messing around and ended up turning a random photo into frame-worthy art. Wildly good.",
+    author: "Maya S.",
+    title: "Content Creator",
     rating: 5,
   },
   {
     quote:
-      "I've tried many AI art tools, but this one stands out for its quality and ease of use.",
-    author: "Michael Chen",
-    title: "Professional Photographer",
+      "Tried the Cyberpunk style on a random street photo and it came out looking like Blade Runner. Insanely cool.",
+    author: "David K.",
+    title: "Indie Developer",
     rating: 5,
   },
   {
     quote:
-      "The variety of styles is incredible. My clients love the unique artwork it creates.",
-    author: "Alex Rivera",
-    title: "Creative Director",
+      "Finally an AI art tool that doesn’t make me click through 10 steps. Just upload, pick a style, done. Love it.",
+    author: "Priya R.",
+    title: "Hobbyist Artist",
     rating: 5,
   },
 ];

@@ -8,7 +8,7 @@ const signInWithGoogle = async () => {
   const callbackPrefix =
     process.env.NEXT_PUBLIC_SITE_URL ??
     `https://${process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL}`;
-  const callbackUrl = `${callbackPrefix}/auth/callback`;
+  const callbackUrl = `${callbackPrefix}/auth/callback?next=/app`;
 
   console.log({
     callbackUrl,

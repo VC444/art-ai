@@ -39,6 +39,7 @@ export const artStyles = [
     previewSrc: "/watercolor.png",
     prompt:
       "Convert this image into a soft, elegant watercolor painting. Apply gentle brush strokes, fluid textures, and subtle color bleeds characteristic of traditional watercolor art. Use a pastel-toned, airy palette with soft edges and light gradients. If the image contains people, ensure facial features, expressions, skin tones, and body proportions are accurately preserved—maintain identity and natural appearance while enhancing the artistic style. Keep the composition and key details intact for a realistic yet painterly effect.",
+    positioning: { objectPosition: "left 0 top 0" },
   },
   {
     id: "cyberpunk",
@@ -62,6 +63,7 @@ export const artStyles = [
     previewSrc: "/sketch.png",
     prompt:
       "Convert this image into a detailed black-and-white pencil sketch. Use fine, expressive lines and soft shading to capture depth, form, and texture. Emphasize contrast between light and shadow, while maintaining a hand-drawn, artistic feel. If the image contains people, carefully preserve facial features, expressions, skin tones (as shades), and body proportions—ensure the likeness and natural anatomy are intact. Focus on clarity and realism while enhancing the image with the charm of traditional pencil work. Retain the original composition and key visual elements.",
+    positioning: { objectPosition: "left 0 top 0" },
   },
   {
     id: "oil-painting",

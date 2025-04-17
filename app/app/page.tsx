@@ -396,6 +396,7 @@ const StyleSelector = ({
                   alt={style.name}
                   fill
                   className="object-cover transition-all hover:scale-105"
+                  style={style.positioning}
                 />
               </AspectRatio>
               <h3 className="font-medium">{style.name}</h3>

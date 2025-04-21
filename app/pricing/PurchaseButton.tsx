@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { useSupabase, useUser } from "@/components/hooks/useSupabase";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
+import { loadStripe } from "@stripe/stripe-js";
 
 interface PurchaseButtonProps {
   credits: number;
@@ -34,50 +35,43 @@ export default function PurchaseButton({ credits }: PurchaseButtonProps) {
   if (error) throw error;
 
   const handlePurchase = async () => {
-    if (!supabase || !user?.id) {
-      throw new Error("Supabase client or user ID not available");
-    }
+    if (!user?.id) return;
 
     setLoading(true);
 
     try {
-      const { error } = await supabase.from("credit_balances").upsert({
-        user_id: user.id,
-        credits: creditBalance + credits,
+      const res = await fetch("/api/checkout_sessions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ credits, userId: user.id }),
       });
+      const { url } = await res.json();
+      window.location.href = url;
 
-      if (error) {
-        throw error;
-      }
-
-      await queryClient.invalidateQueries({
-        queryKey: ["credit-balance", user?.id],
-      });
-      toast.success(`${credits} credits added to your account!`);
-    } catch (error) {
-      throw error;
+      // no need to manually redirect — the API does it via 303 redirect
+    } catch (err) {
+      console.error(err);
+      toast.error("Something went wrong. Please try again.");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <>
-      <Button
-        className="w-full"
-        variant="default"
-        onClick={handlePurchase}
-        disabled={loading}
-      >
-        {loading ? (
-          <>
-            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-            Processing...
-          </>
-        ) : (
-          <>Buy {credits} Credits</>
-        )}
-      </Button>
-    </>
+    <Button
+      className="w-full"
+      variant="default"
+      disabled={loading}
+      onClick={handlePurchase}
+    >
+      {loading ? (
+        <>
+          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+          Processing...
+        </>
+      ) : (
+        <>Buy {credits} Credits</>
+      )}
+    </Button>
   );
 }

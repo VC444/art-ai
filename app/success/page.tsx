@@ -48,7 +48,7 @@ export default async function Success({ searchParams }: any) {
       email: session.customer_details?.email ?? "N/A",
     };
 
-    if (status === "complete") {
+    if (session.status === "complete") {
       return (
         <div className="flex min-h-screen flex-col bg-background ">
           <main className="flex-1 flex justify-center">

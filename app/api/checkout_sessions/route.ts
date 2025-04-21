@@ -15,8 +15,8 @@ export async function OPTIONS() {
 }
 
 const CREDIT_PRODUCT_MAP: Record<number, string> = {
-  20: "price_1RGF75BBqQLumPCiC8LmH6zz", // $2.99 → 299 cents
-  50: "price_1RGHaaBBqQLumPCibS8ZLAbQ", // $4.99 → 499 cents
+  20: "price_1RGF75BBqQLumPCiC8LmH6zz",
+  50: "price_1RGHaaBBqQLumPCibS8ZLAbQ",
 };
 
 export async function POST(request: Request) {
@@ -27,12 +27,9 @@ export async function POST(request: Request) {
 
     const priceId = CREDIT_PRODUCT_MAP[credits];
 
-    console.log(priceId);
-    // Create Checkout Sessions from body params.
     const session = await stripe.checkout.sessions.create({
       line_items: [
         {
-          // Provide the exact Price ID (for example, price_1234) of the product you want to sell
           price: priceId,
           quantity: 1,
         },

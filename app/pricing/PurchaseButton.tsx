@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { useSupabase, useUser } from "@/components/hooks/useSupabase";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
-import { loadStripe } from "@stripe/stripe-js";
 
 interface PurchaseButtonProps {
   credits: number;
@@ -47,10 +46,7 @@ export default function PurchaseButton({ credits }: PurchaseButtonProps) {
       });
       const { url } = await res.json();
       window.location.href = url;
-
-      // no need to manually redirect — the API does it via 303 redirect
     } catch (err) {
-      console.error(err);
       toast.error("Something went wrong. Please try again.");
     } finally {
       setLoading(false);

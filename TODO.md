@@ -3,3 +3,4 @@
 3. payments processing
 4. remove dark mode for the landing page
 5. add email confirmation after payment
+6. add credits to account after payment

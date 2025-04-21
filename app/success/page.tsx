@@ -16,13 +16,7 @@ import { Separator } from "@/components/ui/separator";
 import Stripe from "stripe";
 import { toast } from "sonner";
 
-interface PageProps {
-  searchParams: {
-    session_id?: string;
-  };
-}
-
-export default async function Success({ searchParams }: PageProps) {
+export default async function Success({ searchParams }: any) {
   const { session_id } = await searchParams;
 
   if (!session_id)

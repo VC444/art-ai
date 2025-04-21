@@ -19,14 +19,14 @@ export const Footer = () => {
           >
             Terms of Service
           </Link>
-          <Link
+          {/* <Link
             href="#"
             className="text-sm font-medium text-slate-500 hover:text-violet-600"
           >
             Privacy Policy
-          </Link>
+          </Link> */}
           <Link
-            href="#"
+            href="#faq"
             className="text-sm font-medium text-slate-500 hover:text-violet-600"
           >
             FAQ

@@ -6,6 +6,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { APP_NAME } from "@/strings";
 
 export function FAQ() {
   return (
@@ -20,7 +21,7 @@ export function FAQ() {
               Frequently Asked Questions
             </h2>
             <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed">
-              Everything you need to know about ArtifyAI
+              Everything you need to know about {APP_NAME}
             </p>
           </div>
         </div>
@@ -29,7 +30,7 @@ export function FAQ() {
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="item-1">
               <AccordionTrigger className="text-xl">
-                How do I use ArtifyAI?
+                How do I use {APP_NAME}?
               </AccordionTrigger>
               <AccordionContent>
                 Upload your image, pick an art style, and our AI transforms it
@@ -69,10 +70,10 @@ export function FAQ() {
                 What resolution are the transformed images?
               </AccordionTrigger>
               <AccordionContent>
-                ArtifyAI generates high-resolution outputs that match your input
-                image's resolution, up to 2048x2048 pixels. This ensures your
-                transformed images are suitable for printing, social media, and
-                professional use.
+                {APP_NAME} generates high-resolution outputs that match your
+                input image's resolution, up to 2048x2048 pixels. This ensures
+                your transformed images are suitable for printing, social media,
+                and professional use.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-6">
@@ -90,7 +91,7 @@ export function FAQ() {
               </AccordionTrigger>
               <AccordionContent>
                 Yes, you retain all rights to both your original images and the
-                transformed versions created with ArtifyAI. You're free to use
+                transformed versions created with {APP_NAME}. You're free to use
                 the transformed images for personal or commercial purposes,
                 subject to the rights you hold for the original images.
               </AccordionContent>

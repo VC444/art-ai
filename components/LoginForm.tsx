@@ -5,6 +5,7 @@ import { GalleryVerticalEnd } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { signInWithGoogle } from "@/utils/actions";
+import { APP_NAME } from "@/strings";
 
 export function LoginForm({
   className,
@@ -22,9 +23,9 @@ export function LoginForm({
               <div className="flex size-8 items-center justify-center rounded-md">
                 <GalleryVerticalEnd className="size-6" />
               </div>
-              <span className="sr-only">Art AI</span>
+              <span className="sr-only">{APP_NAME}</span>
             </a>
-            <h1 className="text-xl font-bold">Art AI</h1>
+            <h1 className="text-xl font-bold">{APP_NAME}</h1>
             {/* <div className="text-center text-sm">
               Don&apos;t have an account?{" "}
               <a href="#" className="underline underline-offset-4">

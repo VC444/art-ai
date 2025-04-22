@@ -43,6 +43,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { UserAvatar } from "@/components/UserAvatar";
+import { APP_NAME } from "@/strings";
 
 export default function Home() {
   const [uploadedImage, setUploadedImage] = useState<string | null>(null);
@@ -140,7 +141,7 @@ export default function Home() {
 
         <div className="flex items-center gap-2 mb-8">
           <Wand2 className="h-6 w-6 text-primary" />
-          <h1 className="font-bold text-3xl">ArtifyAI</h1>
+          <h1 className="font-bold text-3xl">{APP_NAME}</h1>
         </div>
 
         <UserAvatar />

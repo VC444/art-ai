@@ -1,4 +1,5 @@
 import { Card } from "@/components/ui/card";
+import { APP_NAME } from "@/strings";
 import { Star } from "lucide-react";
 import React from "react";
 
@@ -16,7 +17,7 @@ export const Testimonials = () => {
             </h2>
             <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed">
               Don't just take our word for it. Here's what our users have to say
-              about ArtifyAI.
+              about {APP_NAME}.
             </p>
           </div>
         </div>

@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AI Image Transformer",
+  title: "Artzie",
   description: "AI image transformer app",
 };
 

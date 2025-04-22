@@ -1,3 +1,4 @@
+import { APP_NAME } from "@/strings";
 import { Wand2 } from "lucide-react";
 import Link from "next/link";
 import React from "react";
@@ -9,7 +10,7 @@ export const Footer = () => {
         <div className="flex items-center gap-2">
           <Wand2 className="h-6 w-6 text-violet-600" />
           <span className="text-lg font-bold bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
-            ArtifyAI
+            {APP_NAME}
           </span>
         </div>
         <nav className="flex flex-wrap gap-6 justify-center">
@@ -39,7 +40,7 @@ export const Footer = () => {
           </Link>
         </nav>
         <p className="text-center text-sm text-slate-500">
-          © {new Date().getFullYear()} ArtifyAI. All rights reserved.
+          © {new Date().getFullYear()} {APP_NAME}. All rights reserved.
         </p>
       </div>
     </footer>

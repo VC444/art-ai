@@ -2,41 +2,38 @@ import fs from "fs";
 import path from "path";
 import { createClientForServer } from "@/utils/supabase/server";
 import { NextRequest } from "next/server";
-import OpenAI from "openai";
+import OpenAI, { toFile } from "openai";
 import { sleep } from "openai/core.mjs";
 
 export async function GET(request: NextRequest) {
   const supabase = await createClientForServer();
-  // const client = new OpenAI({
-  //   apiKey: process.env["OPENAI_API_KEY"],
-  // });
+  const client = new OpenAI({
+    apiKey: process.env["OPENAI_API_KEY"],
+  });
 
-  // const imagePath = path.join(process.cwd(), "public", "sketch-og.jpg");
-  // const base64Image = fs.readFileSync(imagePath, "base64");
+  const imagePath = path.join(process.cwd(), "public", "sketch-og.jpg");
+  const base64Image = fs.readFileSync(imagePath, "base64");
 
-  // console.log({ base64Image });
+  console.log({ imagePath });
 
-  // const response = await client.responses.create({
-  //   model: "gpt-4o",
-  //   input: [
-  //     {
-  //       role: "user",
-  //       content: [
-  //         {
-  //           type: "input_text",
-  //           text: "Convert this image into pixar art style",
-  //         },
-  //         {
-  //           type: "input_image",
-  //           image_url: `data:image/jpeg;base64,${base64Image}`,
-  //           detail: "high",
-  //         },
-  //       ],
-  //     },
-  //   ],
-  // });
+  const originalImage = await toFile(fs.createReadStream(imagePath), null, {
+    type: "image/jpg",
+  });
 
-  await sleep(1000);
+  const rsp = await client.images.edit({
+    model: "gpt-image-1",
+    image: originalImage,
+    prompt: "Convert this image into pixar art style",
+    quality: "high",
+  });
+
+  console.log(rsp);
+
+  // Save the image to a file
+  // @ts-ignore
+  const image_base64: string = rsp.data[0].b64_json;
+  const image_bytes = Buffer.from(image_base64, "base64");
+  fs.writeFileSync("basket.png", image_bytes);
 
   const {
     data: { user },
@@ -80,6 +77,6 @@ export async function GET(request: NextRequest) {
   return Response.json({
     success: true,
     remainingCredits: updateData.credits,
-    // openai_resp: response,
+    openai_resp: rsp,
   });
 }

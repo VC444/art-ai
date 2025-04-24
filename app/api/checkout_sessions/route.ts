@@ -15,8 +15,14 @@ export async function OPTIONS() {
 }
 
 const CREDIT_PRODUCT_MAP: Record<number, string> = {
-  20: "price_1RGF75BBqQLumPCiC8LmH6zz",
-  50: "price_1RGHaaBBqQLumPCibS8ZLAbQ",
+  10:
+    process.env.NEXT_PUBLIC_VERCEL_ENV === "production"
+      ? "price_1RHQOIBDY99o9YSgW9kW2ywV"
+      : "price_1RHPzGBBqQLumPCijoJbawYW",
+  25:
+    process.env.NEXT_PUBLIC_VERCEL_ENV === "production"
+      ? "price_1RHQPdBDY99o9YSgFuHnq7pb"
+      : "price_1RHQ01BBqQLumPCiX80IlDaN",
 };
 
 export async function POST(request: Request) {

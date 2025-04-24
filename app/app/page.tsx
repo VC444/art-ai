@@ -222,7 +222,6 @@ export default function Home() {
                     onClick={(e) => {
                       e.stopPropagation();
                       setUploadedImage(null);
-                      setTransformedImage(null);
                     }}
                   >
                     Remove image
@@ -271,7 +270,9 @@ export default function Home() {
                   <div className="space-y-2 mb-4">
                     <Skeleton className="h-[200px] w-[300px] mx-auto rounded-lg" />
                   </div>
-                  <p className="text-lg">Transforming image...</p>
+                  <p className="text-lg">
+                    Transforming image...this will take a few seconds
+                  </p>
                 </div>
               ) : transformedImage ? (
                 <div className="text-center w-full p-4 relative">

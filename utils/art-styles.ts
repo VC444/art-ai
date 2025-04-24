@@ -1,10 +1,22 @@
-// Art styles with real-style images
-export const artStyles = [
+type ArtStyle = {
+  id: string;
+  name: string;
+  description: string;
+  previewSrc: string;
+  prompt: string;
+  positioning?: {
+    objectPosition: string;
+  };
+};
+
+export const artStyles: ArtStyle[] = [
   {
     id: "puppet",
     name: "Puppet",
     description: "Characters with doll-like features and articulated limbs",
     previewSrc: "/puppet.png",
+    prompt:
+      "Transform this image into a playful puppet-style artwork inspired by classic children’s shows like Sesame Street. Characters should appear as soft, handcrafted puppets made from felt, fabric, or faux fur, with button eyes, stitched mouths, and plush textures. Use vibrant, cheerful colors and simplified shapes to create a whimsical, fun atmosphere. If the image contains people, reimagine them as puppet characters while preserving recognizable facial features, hairstyles, clothing colors, and body proportions. Maintain their identity and expression, but apply a charming, Muppet-like transformation. Keep the overall composition and background elements in a colorful, kid-friendly style.",
   },
   {
     id: "ghibli",
@@ -12,6 +24,8 @@ export const artStyles = [
     description:
       "Studio Ghibli-inspired art style with whimsical characters and landscapes",
     previewSrc: "/ghibli.png",
+    prompt:
+      "Convert this image into a Studio Ghibli-inspired artwork. Use soft, painterly textures with rich, hand-drawn details and a whimsical, storybook charm. Apply warm, natural color tones, expressive lighting, and gentle gradients that evoke an emotional, cinematic atmosphere. Emphasize harmony between characters and environment for a dreamy, nostalgic effect. If the image contains people, retain facial features, expressions, and body proportions with a gentle, animated aesthetic. Focus on conveying emotion and personality through subtle gestures and natural styling. Maintain the original composition and pose, while infusing the scene with the magic, wonder, and heartwarming detail characteristic of classic Ghibli films.",
   },
   {
     id: "impressionist",
@@ -19,18 +33,23 @@ export const artStyles = [
     description:
       "Characterized by small, thin brush strokes and emphasis on light",
     previewSrc: "/impressionist.png",
+    prompt:
+      "Convert this image into an Impressionist-style painting. Use visible, expressive brush strokes, soft edges, and a focus on light, movement, and atmosphere rather than fine detail. Capture the overall mood of the scene with a luminous, vibrant palette—emphasizing natural light, fleeting expressions, and an airy, spontaneous feel. If the image contains people or characters, preserve facial features, poses, and skin tones in a loose yet recognizable way. Focus on gesture and emotion over precision, using color, silhouette, and posture to convey identity and presence. Clothing and background elements should feel integrated into the scene through textured strokes and atmospheric blending. Maintain the original composition and relational dynamics while transforming the image into a poetic, painterly snapshot—suggesting motion, life, and the beauty of the moment, in the spirit of Monet, Renoir, or Degas.",
   },
   {
     id: "pixar",
     name: "Pixar",
     description: "Pixar art style",
     previewSrc: "/pixar.png",
+    prompt: "Convert this image into pixar art style",
   },
   {
     id: "19th century",
     name: "19th Century",
     description: "19th-century art with classical details and vintage tones",
     previewSrc: "/1800s.png",
+    prompt:
+      "Convert this image into a 19th-century painting inspired by the Romanticism and Realism movements. Use rich, naturalistic colors, dramatic lighting, and classical composition to evoke the elegance and depth typical of this era. Apply painterly brushwork with a focus on texture, shading, and period-accurate lighting to achieve a museum-worthy aesthetic. If the image contains people, preserve facial features, skin tones, hair styles, and body proportions with high fidelity. Style clothing and posture to echo the historical context—graceful, poised, and subtly idealized while maintaining individual identity and emotion. Highlight facial expressions with realism and depth, conveying subtle narratives and sentiment. Adapt the background into a period-appropriate setting—whether an ornate interior, pastoral landscape, or moody vignette—while keeping the original pose, framing, and relational dynamics intact. Capture the timeless grace and painterly sophistication of 19th-century portraiture and figurative art.",
   },
   {
     id: "watercolor",
@@ -55,6 +74,8 @@ export const artStyles = [
     name: "Pixel Art",
     description: "Digital art created using pixel-by-pixel editing",
     previewSrc: "/pixel.png",
+    prompt:
+      "Convert this image into detailed pixel art. Use a low-resolution, grid-based aesthetic with clearly defined pixels, preserving color accuracy and key visual elements within simplified forms. Apply pixel shading, selective outlining, and dithering techniques to add depth, texture, and visual interest. The result should feel nostalgic and retro while remaining clean and readable. If the image includes people or characters, preserve facial features, skin tones, hairstyles, and body proportions as accurately as possible within pixel constraints. Ensure each character is recognizable, expressive, and distinct—even with minimal detail. Maintain original poses, expressions, and character interactions to retain emotional context and personality. Keep the overall composition and background layout intact, translating environments into blocky yet charming forms that reflect the original scene. Aim for a balanced mix of stylized minimalism and visual storytelling in a classic 8-bit or 16-bit video game style.",
   },
   {
     id: "sketch",
@@ -70,6 +91,8 @@ export const artStyles = [
     name: "Oil Painting",
     description: "Rich colors with textured brush strokes",
     previewSrc: "/oil.png",
+    prompt:
+      "Convert this image into a classic oil painting. Use rich, textured brush strokes with visible layering and blending to simulate the depth and dimensionality of traditional oil on canvas. Apply warm, earthy tones and painterly lighting to enhance realism and atmosphere. If the image contains people, preserve facial features, expressions, skin tones, and body proportions with high accuracy—ensure their identity remains intact while capturing them in a romantic, expressive, and artistic light. Use soft edges, natural lighting, and detailed shading to give the portrait depth and elegance. Keep the original composition and key visual elements, reinterpreted through an impressionistic or classical oil painting lens.",
   },
   {
     id: "caricature",

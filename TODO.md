@@ -4,3 +4,4 @@
 4. add email confirmation after payment
 5. add credits to account after payment
 6. logout button
+7. fix watercolor

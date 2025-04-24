@@ -48,12 +48,12 @@ export default function PricingPage() {
               </CardDescription>
             </CardHeader>
             <CardContent className="flex-grow">
-              <div className="text-4xl font-bold mb-6">$2.99</div>
+              <div className="text-4xl font-bold mb-6">$4.99</div>
 
               <div className="space-y-2">
                 <div className="flex items-center">
                   <Check className="h-5 w-5 text-green-500 mr-2" />
-                  <span>20 AI transformation credits</span>
+                  <span>10 AI transformation credits</span>
                 </div>
                 <div className="flex items-center">
                   <Check className="h-5 w-5 text-green-500 mr-2" />
@@ -70,7 +70,7 @@ export default function PricingPage() {
               </div>
             </CardContent>
             <CardFooter>
-              <PurchaseButton credits={20} />
+              <PurchaseButton credits={10} />
             </CardFooter>
           </Card>
 
@@ -89,12 +89,14 @@ export default function PricingPage() {
               <CardDescription>More credits at a better price</CardDescription>
             </CardHeader>
             <CardContent className="flex-grow">
-              <div className="text-4xl font-bold mb-6">$4.99</div>
+              <div className="text-4xl font-bold mb-6">$9.99</div>
 
               <div className="space-y-2">
-                <div className="flex items-center font-medium">
+                <div className="flex items-center ">
                   <Check className="h-5 w-5 text-green-500 mr-2" />
-                  <span>50 AI transformation credits</span>
+                  <span className="font-semibold">
+                    25 AI transformation credits
+                  </span>
                 </div>
                 <div className="flex items-center">
                   <Check className="h-5 w-5 text-green-500 mr-2" />
@@ -110,12 +112,12 @@ export default function PricingPage() {
                 </div>
                 <div className="flex items-center">
                   <Check className="h-5 w-5 text-green-500 mr-2" />
-                  <span>50% more value</span>
+                  <span className="font-semibold">5 FREE CREDITS</span>
                 </div>
               </div>
             </CardContent>
             <CardFooter>
-              <PurchaseButton credits={50} />
+              <PurchaseButton credits={25} />
             </CardFooter>
           </Card>
         </div>

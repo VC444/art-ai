@@ -44,6 +44,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { UserAvatar } from "@/components/UserAvatar";
 import { APP_NAME } from "@/strings";
+import { toast } from "sonner";
 
 export default function Home() {
   const [uploadedImage, setUploadedImage] = useState<string | null>(null);
@@ -64,19 +65,43 @@ export default function Home() {
 
     setIsTransforming(true);
 
-    const transformedData = await fetch("/transform");
+    try {
+      const response = await fetch("/transform", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          image: uploadedImage,
+          style: selectedStyle,
+        }),
+      });
 
-    setTransformedImage(uploadedImage);
-    setIsTransforming(false);
+      const json = await response.json();
+
+      if (json.error) {
+        throw new Error(json.error);
+      }
+
+      // Convert base64 to data URL for image display
+      const imageData = `data:image/png;base64,${json.image}`;
+      setTransformedImage(imageData);
+    } catch (error: any) {
+      console.log(error);
+      toast.error(
+        "Something went wrong while generating the image. Please try again."
+      );
+    } finally {
+      setIsTransforming(false);
+    }
   };
 
   const handleDownload = () => {
     if (!transformedImage) return;
 
-    // Create a temporary anchor element
     const link = document.createElement("a");
     link.href = transformedImage;
-    link.download = `transformed-image-${selectedStyle}.jpg`;
+    link.download = `artzie-${selectedStyle}-${Date.now()}.png`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

@@ -42,12 +42,12 @@ export const Pricing = () => {
               </CardDescription>
             </CardHeader>
             <CardContent className="flex-grow">
-              <div className="text-4xl font-bold mb-6">$2.99</div>
+              <div className="text-4xl font-bold mb-6">$4.99</div>
 
               <div className="space-y-2">
                 <div className="flex items-center">
                   <Check className="h-5 w-5 text-green-500 mr-2" />
-                  <span>20 AI transformation credits</span>
+                  <span>10 AI transformation credits</span>
                 </div>
                 <div className="flex items-center">
                   <Check className="h-5 w-5 text-green-500 mr-2" />
@@ -85,12 +85,14 @@ export const Pricing = () => {
               <CardDescription>More credits at a better price</CardDescription>
             </CardHeader>
             <CardContent className="flex-grow">
-              <div className="text-4xl font-bold mb-6">$4.99</div>
+              <div className="text-4xl font-bold mb-6">$9.99</div>
 
               <div className="space-y-2">
-                <div className="flex items-center font-medium">
+                <div className="flex items-center ">
                   <Check className="h-5 w-5 text-green-500 mr-2" />
-                  <span>50 AI transformation credits</span>
+                  <span className="font-semibold">
+                    25 AI transformation credits
+                  </span>
                 </div>
                 <div className="flex items-center">
                   <Check className="h-5 w-5 text-green-500 mr-2" />
@@ -106,7 +108,7 @@ export const Pricing = () => {
                 </div>
                 <div className="flex items-center">
                   <Check className="h-5 w-5 text-green-500 mr-2" />
-                  <span>50% more value</span>
+                  <span className="font-semibold">5 FREE CREDITS</span>
                 </div>
               </div>
             </CardContent>

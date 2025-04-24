@@ -1,39 +1,10 @@
-import fs from "fs";
-import path from "path";
 import { createClientForServer } from "@/utils/supabase/server";
 import { NextRequest } from "next/server";
 import OpenAI, { toFile } from "openai";
-import { sleep } from "openai/core.mjs";
+import { artStyles } from "@/utils/art-styles";
 
-export async function GET(request: NextRequest) {
+export async function POST(request: NextRequest) {
   const supabase = await createClientForServer();
-  const client = new OpenAI({
-    apiKey: process.env["OPENAI_API_KEY"],
-  });
-
-  const imagePath = path.join(process.cwd(), "public", "sketch-og.jpg");
-  const base64Image = fs.readFileSync(imagePath, "base64");
-
-  console.log({ imagePath });
-
-  const originalImage = await toFile(fs.createReadStream(imagePath), null, {
-    type: "image/jpg",
-  });
-
-  const rsp = await client.images.edit({
-    model: "gpt-image-1",
-    image: originalImage,
-    prompt: "Convert this image into pixar art style",
-    quality: "high",
-  });
-
-  console.log(rsp);
-
-  // Save the image to a file
-  // @ts-ignore
-  const image_base64: string = rsp.data[0].b64_json;
-  const image_bytes = Buffer.from(image_base64, "base64");
-  fs.writeFileSync("basket.png", image_bytes);
 
   const {
     data: { user },
@@ -47,7 +18,7 @@ export async function GET(request: NextRequest) {
   const creditsResp = await supabase
     .from("credit_balances")
     .select("credits")
-    .eq("user_id", user?.id)
+    .eq("user_id", user.id)
     .single();
 
   if (creditsResp.error) {
@@ -58,12 +29,38 @@ export async function GET(request: NextRequest) {
     return Response.json({ error: "Not enough credits" }, { status: 403 });
   }
 
+  const client = new OpenAI({
+    apiKey: process.env["OPENAI_API_KEY"],
+  });
+
+  const { image, style } = await request.json();
+
+  const base64Data = image.replace(/^data:image\/\w+;base64,/, "");
+  const imageBuffer = Buffer.from(base64Data, "base64");
+
+  const originalImage = await toFile(imageBuffer, "image.png", {
+    type: "image/png",
+  });
+
+  const selectedStyle = artStyles.find((artStyle) => artStyle.id === style);
+
+  if (!selectedStyle?.prompt) {
+    return Response.json({ error: "Art style not supported" }, { status: 400 });
+  }
+
+  const rsp = await client.images.edit({
+    model: "gpt-image-1",
+    image: originalImage,
+    prompt: selectedStyle.prompt,
+    quality: "low",
+  });
+
   const { data: updateData, error: updateError } = await supabase
     .from("credit_balances")
-    .upsert({
-      user_id: user.id,
+    .update({
       credits: creditsResp.data.credits - 1,
     })
+    .eq("user_id", user.id)
     .select()
     .single();
 
@@ -74,9 +71,18 @@ export async function GET(request: NextRequest) {
     );
   }
 
+  // @ts-ignore
+  if (!rsp.data[0].b64_json) {
+    return Response.json(
+      { error: "Failed to generate image. Base64 encoding not received." },
+      { status: 500 }
+    );
+  }
+
   return Response.json({
-    success: true,
     remainingCredits: updateData.credits,
-    openai_resp: rsp,
+    // @ts-ignore
+    image: rsp.data[0].b64_json,
+    rsp,
   });
 }

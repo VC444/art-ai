@@ -48,10 +48,12 @@ export async function POST(request: NextRequest) {
     return Response.json({ error: "Art style not supported" }, { status: 400 });
   }
 
+  const prompt = `${selectedStyle.prompt}. Match the original image's orientation and aspect ratio exactly. Do not alter from portrait to landscape or vice versa.`;
+
   const rsp = await client.images.edit({
     model: "gpt-image-1",
     image: originalImage,
-    prompt: selectedStyle.prompt,
+    prompt,
     quality: "high",
   });
 

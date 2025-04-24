@@ -5,3 +5,4 @@
 5. add credits to account after payment
 6. logout button
 7. fix watercolor
+8. add privacy policy and say we don't store your images

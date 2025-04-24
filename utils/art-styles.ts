@@ -57,7 +57,7 @@ export const artStyles: ArtStyle[] = [
     description: "Transparent layers with soft, flowing transitions",
     previewSrc: "/watercolor.png",
     prompt:
-      "Convert this image into a soft, elegant watercolor painting. Apply gentle brush strokes, fluid textures, and subtle color bleeds characteristic of traditional watercolor art. Use a pastel-toned, airy palette with soft edges and light gradients. If the image contains people, ensure facial features, expressions, skin tones, and body proportions are accurately preserved—maintain identity and natural appearance while enhancing the artistic style. Keep the composition and key details intact for a realistic yet painterly effect.",
+      "Transform this image into a soft, elegant watercolor painting while preserving the exact pose, composition, and facial structure of the original. Use gentle brush strokes, fluid textures, and subtle color bleeds typical of traditional watercolor art. Apply a pastel-toned, airy palette with soft edges and smooth gradients. If the image includes people, maintain accurate facial features, expressions, skin tones, and proportions to preserve identity and natural appearance. Ensure the overall composition and positioning of elements remain true to the original image.",
     positioning: { objectPosition: "left 0 top 0" },
   },
   {

@@ -52,7 +52,7 @@ export async function POST(request: NextRequest) {
     model: "gpt-image-1",
     image: originalImage,
     prompt: selectedStyle.prompt,
-    quality: "low",
+    quality: "high",
   });
 
   const { data: updateData, error: updateError } = await supabase

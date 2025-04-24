@@ -89,7 +89,7 @@ export default function Home() {
     } catch (error: any) {
       console.log(error);
       toast.error(
-        "Something went wrong while generating the image. Please try again."
+        error.message || "An error occurred while transforming the image"
       );
     } finally {
       setIsTransforming(false);

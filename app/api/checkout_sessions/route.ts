@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { headers } from "next/headers";
 
 import { stripe } from "../../../lib/stripe";
+import { createClientForServer } from "@/utils/supabase/server";
 
 export async function OPTIONS() {
   return new NextResponse(null, {
@@ -27,6 +28,17 @@ const CREDIT_PRODUCT_MAP: Record<number, string> = {
 
 export async function POST(request: Request) {
   try {
+    const supabase = await createClientForServer();
+
+    const {
+      data: { user },
+      error: authError,
+    } = await supabase.auth.getUser();
+
+    if (authError || !user) {
+      return Response.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
     const headersList = await headers();
     const origin = headersList.get("origin");
     const { credits } = await request.json();
@@ -43,6 +55,9 @@ export async function POST(request: Request) {
       mode: "payment",
       success_url: `${origin}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/?canceled=true`,
+      metadata: {
+        user_id: user.id,
+      },
     });
     return NextResponse.json({ url: session.url });
   } catch (err: any) {

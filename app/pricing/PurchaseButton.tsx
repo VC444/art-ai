@@ -3,8 +3,7 @@
 import { useState } from "react";
 import { Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useSupabase, useUser } from "@/components/hooks/useSupabase";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useUser } from "@/components/hooks/useSupabase";
 import { toast } from "sonner";
 
 interface PurchaseButtonProps {
@@ -12,26 +11,8 @@ interface PurchaseButtonProps {
 }
 
 export default function PurchaseButton({ credits }: PurchaseButtonProps) {
-  const supabase = useSupabase();
   const user = useUser();
-  const queryClient = useQueryClient();
   const [loading, setLoading] = useState(false);
-
-  const { data: creditBalance, error } = useQuery({
-    queryKey: ["credit-balance", user?.id],
-    queryFn: async () => {
-      const creditsResp = await supabase
-        ?.from("credit_balances")
-        .select("credits")
-        .eq("user_id", user?.id)
-        .single();
-
-      return creditsResp?.data?.credits ?? 0;
-    },
-    enabled: !!user?.id && !!supabase,
-  });
-
-  if (error) throw error;
 
   const handlePurchase = async () => {
     if (!user?.id) return;

@@ -26,7 +26,10 @@ export async function POST(request: NextRequest) {
   }
 
   if (!creditsResp.data || creditsResp.data?.credits <= 0) {
-    return Response.json({ error: "Not enough credits" }, { status: 403 });
+    return Response.json(
+      { error: "You are out of credits. Please buy more and try again." },
+      { status: 403 }
+    );
   }
 
   const client = new OpenAI({
@@ -57,22 +60,6 @@ export async function POST(request: NextRequest) {
     quality: "high",
   });
 
-  const { data: updateData, error: updateError } = await supabase
-    .from("credit_balances")
-    .update({
-      credits: creditsResp.data.credits - 1,
-    })
-    .eq("user_id", user.id)
-    .select()
-    .single();
-
-  if (updateError) {
-    return Response.json(
-      { error: "Failed to update credits" },
-      { status: 500 }
-    );
-  }
-
   // @ts-ignore
   if (!rsp.data[0].b64_json) {
     return Response.json(
@@ -82,7 +69,6 @@ export async function POST(request: NextRequest) {
   }
 
   return Response.json({
-    remainingCredits: updateData.credits,
     // @ts-ignore
     image: rsp.data[0].b64_json,
     rsp,

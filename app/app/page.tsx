@@ -9,7 +9,6 @@ import {
   Maximize2,
   Upload,
   Wand2,
-  X,
 } from "lucide-react";
 import { useDropzone } from "react-dropzone";
 
@@ -26,27 +25,15 @@ import { artStyles } from "@/utils/art-styles";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Skeleton } from "@/components/ui/skeleton";
-import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { createClientForBrowser } from "@/utils/supabase/client";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { UserAvatar } from "@/components/UserAvatar";
 import { APP_NAME } from "@/strings";
 import { toast } from "sonner";
+import { useQueryClient } from "@tanstack/react-query";
 
 export default function Home() {
+  const queryClient = useQueryClient();
   const [uploadedImage, setUploadedImage] = useState<string | null>(null);
   const [selectedStyle, setSelectedStyle] = useState<string | null>(null);
   const [transformedImage, setTransformedImage] = useState<string | null>(null);
@@ -86,6 +73,42 @@ export default function Home() {
       // Convert base64 to data URL for image display
       const imageData = `data:image/png;base64,${json.image}`;
       setTransformedImage(imageData);
+
+      const supabase = createClientForBrowser();
+
+      const {
+        data: { user },
+        error: authError,
+      } = await supabase.auth.getUser();
+
+      if (authError || !user) {
+        throw new Error("Unauthorized");
+      }
+
+      const creditsResp = await supabase
+        .from("credit_balances")
+        .select("credits")
+        .eq("user_id", user.id)
+        .single();
+
+      if (creditsResp.error) {
+        throw new Error("Failed to fetch credits");
+      }
+
+      const { data: updateData, error: updateError } = await supabase
+        .from("credit_balances")
+        .update({
+          credits: creditsResp.data.credits - 1,
+        })
+        .eq("user_id", user.id)
+        .select()
+        .single();
+
+      if (updateError) {
+        throw new Error("Failed to update credits");
+      }
+
+      queryClient.invalidateQueries({ queryKey: ["credit-balance"] });
     } catch (error: any) {
       console.log(error);
       toast.error(

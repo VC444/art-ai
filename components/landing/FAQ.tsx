@@ -42,15 +42,15 @@ export function FAQ() {
                 What image formats are supported?
               </AccordionTrigger>
               <AccordionContent>
-                JPG, PNG, and WEBP — up to 20MB per image.
+                JPEG, PNG, and WEBP — up to 25MB per image.
               </AccordionContent>
               <AccordionItem value="item-3">
                 <AccordionTrigger className="text-xl">
                   How do credits work?
                 </AccordionTrigger>
                 <AccordionContent>
-                  Each image transformation costs 1 credit. You can buy 20
-                  credits for $2.99 or 50 credits for $4.99 — the more you get,
+                  Each image transformation costs 1 credit. You can buy 10
+                  credits for $4.99 or 25 credits for $9.99 — the more you get,
                   the better the value.
                 </AccordionContent>
               </AccordionItem>
@@ -71,7 +71,7 @@ export function FAQ() {
               </AccordionTrigger>
               <AccordionContent>
                 {APP_NAME} generates high-resolution outputs that match your
-                input image's resolution, up to 2048x2048 pixels. This ensures
+                input image's resolution, up to 1536x1024 pixels. This ensures
                 your transformed images are suitable for printing, social media,
                 and professional use.
               </AccordionContent>

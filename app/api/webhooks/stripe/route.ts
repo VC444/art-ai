@@ -1,11 +1,11 @@
 import { NextRequest } from "next/server";
 import { headers } from "next/headers";
-import { createClientForServer } from "@/utils/supabase/server";
 import Stripe from "stripe";
 import { stripe } from "@/lib/stripe";
+import { createClient } from "@supabase/supabase-js";
 
 export async function POST(req: NextRequest) {
-  const rawBody = await req.text(); // ⚠️ Raw body for Stripe
+  const rawBody = await req.text();
   const reqHeaders = await headers();
   const signature = reqHeaders.get("stripe-signature") as string;
 
@@ -33,10 +33,13 @@ export async function POST(req: NextRequest) {
         return new Response("No user_id in metadata", { status: 400 });
       }
 
-      const supabase = await createClientForServer();
+      const supabaseAdmin = createClient(
+        process.env.NEXT_PUBLIC_SUPABASE_URL!,
+        process.env.SUPABASE_SERVICE_ROLE_KEY!
+      );
 
       // 1. Fetch current credits
-      const { data: creditData, error: creditError } = await supabase
+      const { data: creditData, error: creditError } = await supabaseAdmin
         .from("credit_balances")
         .select("credits")
         .eq("user_id", userId)
@@ -47,7 +50,6 @@ export async function POST(req: NextRequest) {
       }
 
       const currentCredits = creditData.credits;
-      console.log({ currentCredits });
 
       // Fetch line items from the session
       const lineItems = await stripe.checkout.sessions.listLineItems(
@@ -58,7 +60,6 @@ export async function POST(req: NextRequest) {
       );
 
       const item = lineItems.data[0];
-      console.log({ item });
       const priceMetadata = item.price?.metadata;
       const creditsToAdd = parseInt(priceMetadata?.credits || "0", 10);
 
@@ -66,7 +67,7 @@ export async function POST(req: NextRequest) {
         return new Response("Missing credits in metadata", { status: 400 });
       }
 
-      const { error: updateError } = await supabase
+      const { error: updateError } = await supabaseAdmin
         .from("credit_balances")
         .update({ credits: currentCredits + creditsToAdd })
         .eq("user_id", userId);

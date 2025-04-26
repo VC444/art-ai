@@ -53,27 +53,6 @@ export default function Home() {
     setIsTransforming(true);
 
     try {
-      const response = await fetch("/transform", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          image: uploadedImage,
-          style: selectedStyle,
-        }),
-      });
-
-      const json = await response.json();
-
-      if (json.error) {
-        throw new Error(json.error);
-      }
-
-      // Convert base64 to data URL for image display
-      const imageData = `data:image/png;base64,${json.image}`;
-      setTransformedImage(imageData);
-
       const supabase = createClientForBrowser();
 
       const {
@@ -84,6 +63,31 @@ export default function Home() {
       if (authError || !user) {
         throw new Error("Unauthorized");
       }
+
+      const response = await fetch(
+        "https://cn5r2okx6lk2hec7fndqql77ta0eybdt.lambda-url.us-east-1.on.aws",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            image: uploadedImage,
+            style: selectedStyle,
+            userId: user.id,
+          }),
+        }
+      );
+
+      const json = await response.json();
+
+      if (json.error) {
+        throw new Error(json.error);
+      }
+
+      // Convert base64 to data URL for image display
+      const imageData = `data:image/png;base64,${json.image}`;
+      setTransformedImage(imageData);
 
       const creditsResp = await supabase
         .from("credit_balances")

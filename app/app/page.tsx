@@ -114,9 +114,9 @@ export default function Home() {
 
       queryClient.invalidateQueries({ queryKey: ["credit-balance"] });
     } catch (error: any) {
-      console.log(error);
+      console.log("Error transforming image:", error);
       toast.error(
-        error.message || "An error occurred while transforming the image"
+        "An error occurred while transforming the image. Please try again."
       );
     } finally {
       setIsTransforming(false);

@@ -14,7 +14,6 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
 import Stripe from "stripe";
-import { toast } from "sonner";
 
 export default async function Success({ searchParams }: any) {
   const { session_id } = await searchParams;
@@ -149,6 +148,6 @@ export default async function Success({ searchParams }: any) {
       );
     }
   } catch (error) {
-    console.log(error);
+    console.log("error during success redirect", error);
   }
 }

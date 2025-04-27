@@ -37,6 +37,16 @@ export function FAQ() {
                 in seconds. Each transformation uses 1 credit.
               </AccordionContent>
             </AccordionItem>
+            <AccordionItem value="item-free">
+              <AccordionTrigger className="text-xl">
+                Do I get any free credits when I sign up?
+              </AccordionTrigger>
+              <AccordionContent>
+                Yes! All new users receive 1 free credit upon signup. This
+                allows you to try out any style of your choice with your own
+                image before purchasing additional credits.
+              </AccordionContent>
+            </AccordionItem>
             <AccordionItem value="item-2">
               <AccordionTrigger className="text-xl">
                 What image formats are supported?

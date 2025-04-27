@@ -10,13 +10,16 @@ import { Pricing } from "./Pricing";
 import { CTA } from "./CTA";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
+import { FreeCreditBanner } from "./FreeCreditBanner";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-background bg-gradient-to-b from-violet-50 via-white to-blue-50">
-      <Header />
+      {/* <Header /> */}
 
-      <Hero />
+      <FreeCreditBanner />
+
+      {/* <Hero /> */}
 
       <Features />
 

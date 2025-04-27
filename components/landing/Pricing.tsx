@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CreditCard, Check, Zap } from "lucide-react";
+import { CreditCard, Check, Zap, Gift } from "lucide-react";
 import {
   Card,
   CardContent,
@@ -26,6 +26,10 @@ export const Pricing = () => {
             <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed">
               Transform images into masterpieces with one click.
             </p>
+            <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-sm font-medium text-black">
+              <Gift className="h-4 w-4" />
+              <span>Sign up today and get 1 free credit to try any style!</span>
+            </div>
           </div>
         </div>
 

@@ -1,9 +1,10 @@
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Check, ImageIcon, Share2, Zap } from "lucide-react";
+import { ArrowRight, Check, Gift, ImageIcon, Share2, Zap } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { FreeCreditBanner } from "./FreeCreditBanner";
 
 export const Hero = () => {
   return (
@@ -22,6 +23,10 @@ export const Hero = () => {
               Choose from a variety of artistic styles like Ghibli in just a few
               clicks.
             </p>
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-sm font-medium text-black">
+              <Gift className="h-4 w-4" />
+              <span>New users receive 1 free credit to try any style!</span>
+            </div>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button size="lg" className="text-lg" asChild>
                 <Link href="/app">Get Started</Link>

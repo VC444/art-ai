@@ -34,6 +34,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { LoginModal } from "./LoginModal";
 
 export default function Home() {
+  console.log("home");
   const queryClient = useQueryClient();
   const [uploadedImage, setUploadedImage] = useState<string | null>(null);
   const [selectedStyle, setSelectedStyle] = useState<string | null>(null);

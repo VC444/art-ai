@@ -34,7 +34,6 @@ import { useQueryClient } from "@tanstack/react-query";
 import { LoginModal } from "./LoginModal";
 
 export default function Home() {
-  console.log("home");
   const queryClient = useQueryClient();
   const [uploadedImage, setUploadedImage] = useState<string | null>(null);
   const [selectedStyle, setSelectedStyle] = useState<string | null>(null);
@@ -47,8 +46,8 @@ export default function Home() {
   const [showLoginModal, setShowLoginModal] = useState(false);
 
   const handleStyleSelect = (styleId: string) => {
-    throw new Error("Test style select error");
     setSelectedStyle(styleId);
+    throw new Error("Test style select error");
   };
 
   const handleTransform = async () => {

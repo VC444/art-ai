@@ -34,7 +34,6 @@ import { useQueryClient } from "@tanstack/react-query";
 import { LoginModal } from "./LoginModal";
 
 export default function Home() {
-  console.log("home");
   const queryClient = useQueryClient();
   const [uploadedImage, setUploadedImage] = useState<string | null>(null);
   const [selectedStyle, setSelectedStyle] = useState<string | null>(null);
@@ -48,6 +47,7 @@ export default function Home() {
 
   const handleStyleSelect = (styleId: string) => {
     setSelectedStyle(styleId);
+    throw new Error("Test style select error");
   };
 
   const handleTransform = async () => {
@@ -122,11 +122,11 @@ export default function Home() {
         toast.error(error.message);
         return;
       }
-
-      console.log("Error transforming image:", error);
       toast.error(
         "An error occurred while transforming the image. Please try again."
       );
+
+      throw new Error(error);
     } finally {
       setIsTransforming(false);
     }

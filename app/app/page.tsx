@@ -47,6 +47,7 @@ export default function Home() {
   const [showLoginModal, setShowLoginModal] = useState(false);
 
   const handleStyleSelect = (styleId: string) => {
+    throw new Error("Test style select error");
     setSelectedStyle(styleId);
   };
 
@@ -122,11 +123,11 @@ export default function Home() {
         toast.error(error.message);
         return;
       }
-
-      console.log("Error transforming image:", error);
       toast.error(
         "An error occurred while transforming the image. Please try again."
       );
+
+      throw new Error(error);
     } finally {
       setIsTransforming(false);
     }

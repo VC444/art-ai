@@ -15,17 +15,17 @@ export const Footer = () => {
         </div>
         <nav className="flex flex-wrap gap-6 justify-center">
           <Link
-            href="#"
+            href="https://www.termsfeed.com/live/5ca325b5-b62e-473a-bfbf-695d0b831d16"
             className="text-sm font-medium text-slate-500 hover:text-violet-600"
           >
             Terms of Service
           </Link>
-          {/* <Link
-            href="#"
+          <Link
+            href="https://www.termsfeed.com/live/4c06bc20-1038-48d1-af9b-8a41ebc44415"
             className="text-sm font-medium text-slate-500 hover:text-violet-600"
           >
             Privacy Policy
-          </Link> */}
+          </Link>
           <Link
             href="#faq"
             className="text-sm font-medium text-slate-500 hover:text-violet-600"
@@ -33,7 +33,7 @@ export const Footer = () => {
             FAQ
           </Link>
           <Link
-            href="#"
+            href="mailto:vchan444@gmail.com"
             className="text-sm font-medium text-slate-500 hover:text-violet-600"
           >
             Contact

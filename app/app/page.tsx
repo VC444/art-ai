@@ -31,6 +31,7 @@ import { UserAvatar } from "@/components/UserAvatar";
 import { APP_NAME } from "@/strings";
 import { toast } from "sonner";
 import { useQueryClient } from "@tanstack/react-query";
+import { LoginModal } from "./LoginModal";
 
 export default function Home() {
   const queryClient = useQueryClient();
@@ -42,6 +43,7 @@ export default function Home() {
   const [showOriginalFullscreen, setShowOriginalFullscreen] = useState(false);
   const [showTransformedFullscreen, setShowTransformedFullscreen] =
     useState(false);
+  const [showLoginModal, setShowLoginModal] = useState(false);
 
   const handleStyleSelect = (styleId: string) => {
     setSelectedStyle(styleId);
@@ -61,7 +63,8 @@ export default function Home() {
       } = await supabase.auth.getUser();
 
       if (authError || !user) {
-        throw new Error("Unauthorized");
+        setShowLoginModal(true);
+        return;
       }
 
       const response = await fetch(
@@ -114,6 +117,11 @@ export default function Home() {
 
       queryClient.invalidateQueries({ queryKey: ["credit-balance"] });
     } catch (error: any) {
+      if (error.message === "Out of credits.") {
+        toast.error(error.message);
+        return;
+      }
+
       console.log("Error transforming image:", error);
       toast.error(
         "An error occurred while transforming the image. Please try again."
@@ -413,6 +421,10 @@ export default function Home() {
           </div>
         </DialogContent>
       </Dialog>
+      <LoginModal
+        open={showLoginModal}
+        onClose={() => setShowLoginModal(false)}
+      />
     </div>
   );
 }

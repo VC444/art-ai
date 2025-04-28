@@ -12,8 +12,10 @@ export function FreeCreditBanner() {
               <Gift className="h-4 w-4 text-primary" />
             </div>
             <p className="text-sm font-medium">
-              <span className="font-bold">New users get 1 free credit!</span>{" "}
-              Sign up today and transform your first image on us.
+              <span className="font-bold">
+                Transform your first image free!
+              </span>{" "}
+              No credit card required.
             </p>
           </div>
           <Button
@@ -22,7 +24,7 @@ export function FreeCreditBanner() {
             variant="outline"
             className="border border-primary/20"
           >
-            <Link href="/app">Claim Your Free Credit</Link>
+            <Link href="/app">Try now</Link>
           </Button>
         </div>
       </div>

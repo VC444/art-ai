@@ -32,6 +32,7 @@ import { APP_NAME } from "@/strings";
 import { toast } from "sonner";
 import { useQueryClient } from "@tanstack/react-query";
 import { LoginModal } from "./LoginModal";
+import { ArtzieFrontendError } from "@/utils/sentry/error-structure";
 
 export default function Home() {
   const queryClient = useQueryClient();
@@ -47,7 +48,7 @@ export default function Home() {
 
   const handleStyleSelect = (styleId: string) => {
     setSelectedStyle(styleId);
-    throw new Error("Test style select error");
+    throw new ArtzieFrontendError("Test style select error");
   };
 
   const handleTransform = async () => {
@@ -86,7 +87,7 @@ export default function Home() {
       const json = await response.json();
 
       if (json.error) {
-        throw new Error(json.error);
+        throw new ArtzieFrontendError(json.error);
       }
 
       // Convert base64 to data URL for image display
@@ -100,7 +101,7 @@ export default function Home() {
         .single();
 
       if (creditsResp.error) {
-        throw new Error("Failed to fetch credits");
+        throw new ArtzieFrontendError("Failed to fetch credits");
       }
 
       const { data: updateData, error: updateError } = await supabase
@@ -113,7 +114,7 @@ export default function Home() {
         .single();
 
       if (updateError) {
-        throw new Error("Failed to update credits");
+        throw new ArtzieFrontendError("Failed to update credits");
       }
 
       queryClient.invalidateQueries({ queryKey: ["credit-balance"] });
@@ -126,7 +127,7 @@ export default function Home() {
         "An error occurred while transforming the image. Please try again."
       );
 
-      throw new Error(error);
+      throw new ArtzieFrontendError(error);
     } finally {
       setIsTransforming(false);
     }

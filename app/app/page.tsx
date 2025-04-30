@@ -48,7 +48,6 @@ export default function Home() {
 
   const handleStyleSelect = (styleId: string) => {
     setSelectedStyle(styleId);
-    throw new ArtzieFrontendError("Test style select error");
   };
 
   const handleTransform = async () => {

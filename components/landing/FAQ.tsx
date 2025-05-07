@@ -51,9 +51,7 @@ export function FAQ() {
               <AccordionTrigger className="text-xl">
                 What image formats are supported?
               </AccordionTrigger>
-              <AccordionContent>
-                JPEG, PNG, and WEBP — up to 25MB per image.
-              </AccordionContent>
+              <AccordionContent>JPEG, PNG, and WEBP.</AccordionContent>
               <AccordionItem value="item-3">
                 <AccordionTrigger className="text-xl">
                   How do credits work?

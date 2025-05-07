@@ -117,29 +117,6 @@ export default function Home() {
       const imageData = `data:image/png;base64,${json.image}`;
       setTransformedImage(imageData);
 
-      const creditsResp = await supabase
-        .from("credit_balances")
-        .select("credits")
-        .eq("user_id", user.id)
-        .single();
-
-      if (creditsResp.error) {
-        throw new ArtzieFrontendError("Failed to fetch credits");
-      }
-
-      const { data: updateData, error: updateError } = await supabase
-        .from("credit_balances")
-        .update({
-          credits: creditsResp.data.credits - 1,
-        })
-        .eq("user_id", user.id)
-        .select()
-        .single();
-
-      if (updateError) {
-        throw new ArtzieFrontendError("Failed to update credits");
-      }
-
       queryClient.invalidateQueries({ queryKey: ["credit-balance"] });
     } catch (error: any) {
       toast.error(

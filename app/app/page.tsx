@@ -46,7 +46,6 @@ export default function Home() {
   const [showTransformedFullscreen, setShowTransformedFullscreen] =
     useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
-  const [compressedDataUrl, setCompressedDataUrl] = useState("");
 
   const handleStyleSelect = (styleId: string) => {
     setSelectedStyle(styleId);
@@ -85,8 +84,6 @@ export default function Home() {
       const compressedDataUrl = await imageCompression.getDataUrlFromFile(
         compressedFile
       );
-
-      setCompressedDataUrl(compressedDataUrl);
 
       const {
         data: { session },
@@ -193,11 +190,6 @@ export default function Home() {
   return (
     <div className="container mx-auto py-8 px-4">
       <div className="relative flex items-center justify-center">
-        {/* <h1 className="scroll-m-20 text-4xl font-semibold tracking-tight text-center mb-8">
-          <Wand2 className="h-6 w-6 text-primary" />
-          Artify AI
-        </h1> */}
-
         <div className="flex items-center gap-2 mb-8">
           <Wand2 className="h-6 w-6 text-primary" />
           <h1 className="font-bold text-3xl">{APP_NAME}</h1>

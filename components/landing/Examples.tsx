@@ -47,6 +47,7 @@ export function Examples() {
                       width={600}
                       height={400}
                       className="h-full w-full object-cover"
+                      priority
                     />
                   </div>
                 </div>
@@ -62,6 +63,7 @@ export function Examples() {
                       height={400}
                       className="h-full w-full object-cover"
                       style={{ objectPosition: "left 0 top 0" }}
+                      priority
                     />
                   </div>
                 </div>
@@ -84,6 +86,7 @@ export function Examples() {
                       width={600}
                       height={400}
                       className="h-full w-full object-cover"
+                      priority
                     />
                   </div>
                 </div>
@@ -98,6 +101,7 @@ export function Examples() {
                       width={600}
                       height={400}
                       className="h-full w-full object-cover"
+                      priority
                     />
                   </div>
                 </div>
@@ -120,6 +124,7 @@ export function Examples() {
                       width={600}
                       height={400}
                       className="h-full w-full object-cover"
+                      priority
                     />
                   </div>
                 </div>
@@ -134,6 +139,7 @@ export function Examples() {
                       width={600}
                       height={400}
                       className="h-full w-full object-cover"
+                      priority
                     />
                   </div>
                 </div>
@@ -157,6 +163,7 @@ export function Examples() {
                       height={400}
                       className="h-full w-full object-cover"
                       style={{ objectPosition: "left 40% top 0" }}
+                      priority
                     />
                   </div>
                 </div>
@@ -171,6 +178,7 @@ export function Examples() {
                       width={600}
                       height={400}
                       className="h-full w-full object-cover"
+                      priority
                     />
                   </div>
                 </div>

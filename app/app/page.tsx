@@ -10,6 +10,7 @@ import {
   Upload,
   Wand2,
 } from "lucide-react";
+import imageCompression from "browser-image-compression";
 import { useDropzone } from "react-dropzone";
 
 import { Button } from "@/components/ui/button";
@@ -45,6 +46,7 @@ export default function Home() {
   const [showTransformedFullscreen, setShowTransformedFullscreen] =
     useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const [compressedDataUrl, setCompressedDataUrl] = useState("");
 
   const handleStyleSelect = (styleId: string) => {
     setSelectedStyle(styleId);
@@ -68,17 +70,39 @@ export default function Home() {
         return;
       }
 
+      const originalFile = await imageCompression.getFilefromDataUrl(
+        uploadedImage,
+        "uploaded.jpg"
+      );
+
+      // Compress the file to be <5MB
+      const compressedFile = await imageCompression(originalFile, {
+        maxSizeMB: 5,
+        useWebWorker: true,
+      });
+
+      // Convert back to Data URL for backend
+      const compressedDataUrl = await imageCompression.getDataUrlFromFile(
+        compressedFile
+      );
+
+      setCompressedDataUrl(compressedDataUrl);
+
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+
       const response = await fetch(
-        "https://cn5r2okx6lk2hec7fndqql77ta0eybdt.lambda-url.us-east-1.on.aws",
+        "https://qfqadnaxevzfvxbkjfae.supabase.co/functions/v1/transform-image",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${session?.access_token}`,
           },
           body: JSON.stringify({
-            image: uploadedImage,
+            image: compressedDataUrl,
             style: selectedStyle,
-            userId: user.id,
           }),
         }
       );
@@ -118,12 +142,9 @@ export default function Home() {
 
       queryClient.invalidateQueries({ queryKey: ["credit-balance"] });
     } catch (error: any) {
-      if (error.message === "Out of credits.") {
-        toast.error(error.message);
-        return;
-      }
       toast.error(
-        "An error occurred while transforming the image. Please try again."
+        error.message ||
+          "An error occurred while transforming the image. Please try again."
       );
 
       throw new ArtzieFrontendError(error);

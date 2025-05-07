@@ -40,3 +40,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 This project uses Supabase for auth. It has google Oauth login using the PKCE flow. Refer to [Supabase - Login with Google](https://supabase.com/docs/guides/auth/social-login/auth-google?queryGroups=platform&platform=web&queryGroups=environment&environment=server&queryGroups=framework&framework=nextjs) and [Setting up Server-Side Auth for Next.js](https://supabase.com/docs/guides/auth/server-side/nextjs?queryGroups=router&router=app) for implementation details.
 
 ### Note: Check TODO.md for more details
+
+## Backend
+
+This uses a combination of vercel server functions and supabase edge functions. The image transformation happens inside a supabase edge function.

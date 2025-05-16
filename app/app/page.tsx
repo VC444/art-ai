@@ -4,6 +4,7 @@ import { useCallback, useState } from "react";
 import Image from "next/image";
 import {
   AlertCircle,
+  CheckIcon,
   Download,
   ImageIcon,
   Maximize2,
@@ -291,14 +292,16 @@ export default function Home() {
           </CardHeader>
           <CardContent className="p-6">
             <div className="min-h-[350px] flex items-center justify-center bg-muted/30 rounded-lg">
-              {isTransforming ? (
+              {!isTransforming ? (
                 <div className="text-center">
                   <div className="space-y-2 mb-4">
                     <Skeleton className="h-[200px] w-[300px] mx-auto rounded-lg" />
                   </div>
-                  <p className="text-lg">
-                    Transforming image...this will take a few seconds
-                  </p>
+                  <div className="flex items-center justify-center">
+                    Image transformation started. You'll get an email when it's
+                    ready.
+                    <CheckIcon className="ml-1" color="green" />
+                  </div>
                 </div>
               ) : transformedImage ? (
                 <div className="text-center w-full p-4 relative">

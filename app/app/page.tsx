@@ -292,7 +292,7 @@ export default function Home() {
           </CardHeader>
           <CardContent className="p-6">
             <div className="min-h-[350px] flex items-center justify-center bg-muted/30 rounded-lg">
-              {!isTransforming ? (
+              {isTransforming ? (
                 <div className="text-center">
                   <div className="space-y-2 mb-4">
                     <Skeleton className="h-[200px] w-[300px] mx-auto rounded-lg" />

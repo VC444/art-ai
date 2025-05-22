@@ -43,4 +43,4 @@ This project uses Supabase for auth. It has google Oauth login using the PKCE fl
 
 ## Backend
 
-This uses a combination of vercel server functions and supabase edge functions. The image transformation happens inside a supabase edge function.
+This uses a combination of vercel server functions and supabase edge functions. The image transformation happens inside a supabase edge function. Once the image is ready, an email is sent to the user through Resend - https://resend.com/emails.

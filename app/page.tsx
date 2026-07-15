@@ -11,6 +11,7 @@ import { Footer } from "../components/landing/Footer";
 import { FAQ } from "@/components/landing/FAQ";
 import { FreeCreditBanner } from "@/components/landing/FreeCreditBanner";
 
+// test comment
 export default function Home() {
   return (
     <div className="min-h-screen bg-background bg-gradient-to-b from-violet-50 via-white to-blue-50">

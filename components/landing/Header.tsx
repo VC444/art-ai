@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Wand2 } from "lucide-react";
 import Link from "next/link";
@@ -36,6 +38,13 @@ export const Header = () => {
           >
             Pricing
           </a>
+          <button
+            type="button"
+            onClick={() => alert("hey there")}
+            className="text-sm font-medium hover:text-primary transition-colors"
+          >
+            Say Hi
+          </button>
           <Button variant="default" asChild>
             <Link href="/app">Get Started</Link>
           </Button>

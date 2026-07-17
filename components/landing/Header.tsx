@@ -43,7 +43,7 @@ export const Header = () => {
             onClick={() => alert("hey there")}
             className="text-sm font-medium hover:text-primary transition-colors"
           >
-            Say Hi
+            say hi bro
           </button>
           <Button variant="default" asChild>
             <Link href="/app">Get Started</Link>

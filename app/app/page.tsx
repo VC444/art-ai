@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { Suspense, useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import {
@@ -38,6 +38,14 @@ import { LoginModal } from "./LoginModal";
 import { ArtzieFrontendError } from "@/utils/sentry/error-structure";
 
 export default function Home() {
+  return (
+    <Suspense>
+      <HomeContent />
+    </Suspense>
+  );
+}
+
+function HomeContent() {
   const queryClient = useQueryClient();
   const searchParams = useSearchParams();
   const [uploadedImage, setUploadedImage] = useState<string | null>(null);

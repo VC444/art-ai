@@ -32,6 +32,10 @@ export const Hero = () => {
                 <Link href="/app">Get Started</Link>
               </Button>
 
+              <Button size="lg" className="text-lg" asChild>
+                <Link href="/app?style=pixar">Try Pixar Style</Link>
+              </Button>
+
               <Button
                 size="lg"
                 variant="outline"

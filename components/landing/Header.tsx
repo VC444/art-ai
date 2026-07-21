@@ -1,9 +1,13 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Wand2 } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
 export const Header = () => {
+  const [label, setLabel] = React.useState("Say hi bro");
+
   return (
     <header className="fixed top-0 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-50 border-b">
       <nav className="container mx-auto px-4 h-16 flex items-center justify-between">
@@ -36,6 +40,13 @@ export const Header = () => {
           >
             Pricing
           </a>
+          <button
+            type="button"
+            onClick={() => setLabel("I said hi bro")}
+            className="text-sm font-medium hover:text-primary transition-colors"
+          >
+            {label}
+          </button>
           <Button variant="default" asChild>
             <Link href="/app">Get Started</Link>
           </Button>

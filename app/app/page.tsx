@@ -1,7 +1,8 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
+import { useSearchParams } from "next/navigation";
 import {
   AlertCircle,
   CheckIcon,
@@ -38,6 +39,7 @@ import { ArtzieFrontendError } from "@/utils/sentry/error-structure";
 
 export default function Home() {
   const queryClient = useQueryClient();
+  const searchParams = useSearchParams();
   const [uploadedImage, setUploadedImage] = useState<string | null>(null);
   const [selectedStyle, setSelectedStyle] = useState<string | null>(null);
   const [transformedImage, setTransformedImage] = useState<string | null>(null);
@@ -47,6 +49,17 @@ export default function Home() {
   const [showTransformedFullscreen, setShowTransformedFullscreen] =
     useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
+
+  useEffect(() => {
+    const styleFromQuery = searchParams.get("style");
+
+    if (
+      styleFromQuery &&
+      artStyles.some((style) => style.id === styleFromQuery)
+    ) {
+      setSelectedStyle(styleFromQuery);
+    }
+  }, [searchParams]);
 
   const handleStyleSelect = (styleId: string) => {
     setSelectedStyle(styleId);
@@ -72,7 +85,7 @@ export default function Home() {
 
       const originalFile = await imageCompression.getFilefromDataUrl(
         uploadedImage,
-        "uploaded.jpg"
+        "uploaded.jpg",
       );
 
       // Compress the file to be <5MB
@@ -82,9 +95,8 @@ export default function Home() {
       });
 
       // Convert back to Data URL for backend
-      const compressedDataUrl = await imageCompression.getDataUrlFromFile(
-        compressedFile
-      );
+      const compressedDataUrl =
+        await imageCompression.getDataUrlFromFile(compressedFile);
 
       const {
         data: { session },
@@ -102,7 +114,7 @@ export default function Home() {
             image: compressedDataUrl,
             style: selectedStyle,
           }),
-        }
+        },
       );
 
       const json = await response.json();
@@ -119,7 +131,7 @@ export default function Home() {
     } catch (error: any) {
       toast.error(
         error.message ||
-          "An error occurred while transforming the image. Please try again."
+          "An error occurred while transforming the image. Please try again.",
       );
 
       throw new ArtzieFrontendError(error);

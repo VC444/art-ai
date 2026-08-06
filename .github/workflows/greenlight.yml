@@ -27,9 +27,11 @@ jobs:
     # Forks do not get secrets, so the run could never reach the model.
     if: github.event.pull_request.head.repo.full_name == github.repository
     steps:
-      - uses: VC444/greenlight@main
+      - uses: VC444/greenlight@chore/remove-bbase
         with:
           llm-api-key: ${{ secrets.FIREWORKS_API_KEY }}
+          # Required — the key above must belong to the provider named here.
+          model: fireworks/accounts/fireworks/models/kimi-k2p7-code
           # Only needed if preview deployments are protected (Vercel Pro/Team
           # default). Vercel → Settings → Deployment Protection → Protection
           # Bypass for Automation.

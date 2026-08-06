@@ -31,7 +31,7 @@ jobs:
         with:
           llm-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           # Required — the key above must belong to the provider named here.
-          model: fireworks/accounts/fireworks/models/kimi-k2p7-code
+          # model: fireworks/accounts/fireworks/models/kimi-k2p7-code
           # Only needed if preview deployments are protected (Vercel Pro/Team
           # default). Vercel → Settings → Deployment Protection → Protection
           # Bypass for Automation.

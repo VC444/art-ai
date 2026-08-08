@@ -27,7 +27,7 @@ jobs:
     # Forks do not get secrets, so the run could never reach the model.
     if: github.event.pull_request.head.repo.full_name == github.repository
     steps:
-      - uses: VC444/greenlight@main
+      - uses: VC444/greenlight@feat/fix-comment-edits
         with:
           llm-api-key: ${{ secrets.ANTHROPIC_API_KEY }}
           # Required — the key above must belong to the provider named here.

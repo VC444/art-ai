@@ -29,7 +29,8 @@ jobs:
     steps:
       - uses: VC444/greenlight@feat/fix-comment-edits
         with:
-          llm-api-key: ${{ secrets.ANTHROPIC_API_KEY }}
+          # llm-api-key: ${{ secrets.ANTHROPIC_API_KEY }}
+          llm-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           # Required — the key above must belong to the provider named here.
           model: fireworks/accounts/fireworks/models/kimi-k3
           # model: anthropic/claude-opus-5

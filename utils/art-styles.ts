@@ -30,8 +30,7 @@ export const artStyles: ArtStyle[] = [
   {
     id: "impressionist",
     name: "Impressionist",
-    description:
-      "Characterized by small, thin brush strokes and emphasis on light",
+    description: "random impperssions lol",
     previewSrc: "/impressionist.png",
     prompt:
       "Convert this image into an Impressionist-style painting. Use visible, expressive brush strokes, soft edges, and a focus on light, movement, and atmosphere rather than fine detail. Capture the overall mood of the scene with a luminous, vibrant palette—emphasizing natural light, fleeting expressions, and an airy, spontaneous feel. If the image contains people or characters, preserve facial features, poses, and skin tones in a loose yet recognizable way. Focus on gesture and emotion over precision, using color, silhouette, and posture to convey identity and presence. Clothing and background elements should feel integrated into the scene through textured strokes and atmospheric blending. Maintain the original composition and relational dynamics while transforming the image into a poetic, painterly snapshot—suggesting motion, life, and the beauty of the moment, in the spirit of Monet, Renoir, or Degas.",

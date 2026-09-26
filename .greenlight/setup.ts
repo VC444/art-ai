@@ -1,31 +1,28 @@
-import type { Stagehand } from "@browserbasehq/stagehand";
-import type { Page } from "playwright-core";
-import type { z as Zod } from "zod";
+export default async function setup({ page, signal }) {
+  if (signal.aborted) {
+    throw new Error("Greenlight setup was aborted before selecting Caricature");
+  }
 
-type SetupContext = {
-  stagehand: Stagehand;
-  page: Page;
-  z: typeof Zod;
-  previewUrl: string;
-  signal: AbortSignal;
-};
+  const caricatureTab = page.getByRole("tab", { name: "Caricature", exact: true });
+  await caricatureTab.scrollIntoViewIfNeeded();
 
-export default async function setup({ stagehand, page, signal }: SetupContext) {
-  signal.throwIfAborted();
+  if (signal.aborted) {
+    throw new Error("Greenlight setup was aborted before clicking Caricature");
+  }
 
-  const readyText = page.getByText("Puppet Art Style", { exact: true }).first();
-  if (await readyText.isVisible().catch(() => false)) return;
+  await caricatureTab.click({ timeout: 10_000 });
+  await caricatureTab.waitFor({ state: "visible", timeout: 10_000 });
 
-  const scrolled = await stagehand.act(
-    'Scroll down until the option labeled "Puppet" is visible.',
-    { page },
-  );
-  if (!scrolled.success) throw new Error(scrolled.message);
+  if ((await caricatureTab.getAttribute("aria-selected")) !== "true") {
+    throw new Error("Caricature tab did not become selected");
+  }
 
-  signal.throwIfAborted();
-  const selected = await stagehand.act('Click "Puppet".', { page });
-  if (!selected.success) throw new Error(selected.message);
+  await page
+    .getByRole("tabpanel")
+    .getByRole("heading", { name: "Caricature Art Style", exact: true })
+    .waitFor({ state: "visible", timeout: 10_000 });
 
-  signal.throwIfAborted();
-  await readyText.waitFor({ state: "visible", timeout: 5_000 });
+  if (signal.aborted) {
+    throw new Error("Greenlight setup was aborted after selecting Caricature");
+  }
 }

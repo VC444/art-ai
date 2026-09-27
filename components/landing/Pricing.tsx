@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import { CreditCard, Check, Zap, Gift } from "lucide-react";
 import {
@@ -10,8 +13,56 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+
+// Promo codes recognized at checkout. Percent off is applied to every package.
+const PROMO_CODES: Record<string, number> = {
+  PIXAR20: 0.2,
+};
+
+function formatPrice(base: number, discount: number): string {
+  return `$${(base * (1 - discount)).toFixed(2)}`;
+}
 
 export const Pricing = () => {
+  const [code, setCode] = useState("");
+  const [discount, setDiscount] = useState(0);
+  const [message, setMessage] = useState<{
+    kind: "success" | "error";
+    text: string;
+  } | null>(null);
+
+  const applyCode = () => {
+    const normalized = code.trim().toUpperCase();
+    const match = PROMO_CODES[normalized];
+    if (match) {
+      setDiscount(match);
+      setMessage({
+        kind: "success",
+        text: `${Math.round(match * 100)}% off applied`,
+      });
+    } else {
+      setDiscount(0);
+      setMessage({ kind: "error", text: "Invalid promo code" });
+    }
+  };
+
+  const renderPrice = (base: number) => {
+    if (discount > 0) {
+      return (
+        <div className="mb-6 flex items-baseline gap-2">
+          <span className="text-4xl font-bold">
+            {formatPrice(base, discount)}
+          </span>
+          <span className="text-lg text-muted-foreground line-through">
+            {formatPrice(base, 0)}
+          </span>
+        </div>
+      );
+    }
+    return <div className="text-4xl font-bold mb-6">{formatPrice(base, 0)}</div>;
+  };
+
   return (
     <section id="pricing" className="py-20 bg-muted/50">
       <div className="container mx-auto px-4">
@@ -35,6 +86,37 @@ export const Pricing = () => {
           </div>
         </div>
 
+        <div className="mx-auto mt-8 max-w-md">
+          <form
+            className="flex items-center gap-2"
+            onSubmit={(e) => {
+              e.preventDefault();
+              applyCode();
+            }}
+          >
+            <Input
+              type="text"
+              aria-label="Promo code"
+              placeholder="Promo code"
+              value={code}
+              onChange={(e) => setCode(e.target.value)}
+            />
+            <Button type="submit" variant="outline">
+              Apply
+            </Button>
+          </form>
+          {message && (
+            <p
+              role="status"
+              className={`mt-2 text-center text-sm font-medium ${
+                message.kind === "success" ? "text-green-600" : "text-red-600"
+              }`}
+            >
+              {message.text}
+            </p>
+          )}
+        </div>
+
         <div className="grid gap-8 md:grid-cols-2 max-w-3xl mx-auto mt-8">
           {/* Basic Package */}
           <Card className="flex flex-col">
@@ -48,7 +130,7 @@ export const Pricing = () => {
               </CardDescription>
             </CardHeader>
             <CardContent className="flex-grow">
-              <div className="text-4xl font-bold mb-6">$4.99</div>
+              {renderPrice(4.99)}
 
               <div className="space-y-2">
                 <div className="flex items-center">
@@ -91,7 +173,7 @@ export const Pricing = () => {
               <CardDescription>More credits at a better price</CardDescription>
             </CardHeader>
             <CardContent className="flex-grow">
-              <div className="text-4xl font-bold mb-6">$9.99</div>
+              {renderPrice(9.99)}
 
               <div className="space-y-2">
                 <div className="flex items-center ">
